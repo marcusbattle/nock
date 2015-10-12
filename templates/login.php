@@ -10,7 +10,7 @@
 		<div class="row text-center">
 			<h1>I'm building a private social network.</h1>
 			<p>&nbsp;</p>
-			<p class="lead">Why? Facebook is too public. My parents aren't on Facebook. My wife and I want to share things with them that they wouldn't ever see on Facebook. Soon we'll share them with our closest friends. Then the "world."</p>
+			<p class="lead">Why? Facebook is too public. My parents aren't on Facebook. My wife and I want to share things with them that they wouldn't ever see on Facebook, Instagram or Twitter. Soon we'll share them with our closest friends. Then the "world."</p>
 			<p class="lead">Currently it's only open to Me (Marcus), but if you'd like a preview, email marcus (at) marcusbattle.com</p>
 			<p>&nbsp;</p>
 			<a class="btn btn-default" href="<?php echo home_url('wp-login.php'); ?>">Secret Login for Marcus</a>
