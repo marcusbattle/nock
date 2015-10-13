@@ -2,7 +2,6 @@
 
 /**
  * Redirects non-logged in users to the home page
- * @param  [type] $template [description]
  * @return [type]           [description]
  */
 function redirect_non_logged_in_users() {
@@ -17,6 +16,7 @@ function redirect_non_logged_in_users() {
 }
 
 add_action( 'template_redirect', 'redirect_non_logged_in_users' );
+
 
 function force_login( $template ) {
 
@@ -43,3 +43,8 @@ function society_styles_and_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'society_styles_and_scripts' );
+
+/**
+ * Hide the admin bar on all front facing pages
+ */
+add_filter('show_admin_bar', '__return_false');
