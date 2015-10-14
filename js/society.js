@@ -8,6 +8,7 @@ window.Society = (function ( window, document, $, undefined ) {
     app.init = function () {
 
         $('body').on( 'click', '#post-status', app.postStatus );
+        $('body').on( 'click', '.action a', app.doAction );
 
     };
 
@@ -24,6 +25,16 @@ window.Society = (function ( window, document, $, undefined ) {
         
         if ( response.success ) {
             location.reload();
+        }
+
+    }
+
+    app.doAction = function( click_event ) {
+
+        click_event.preventDefault();
+
+        if ( $(this).hasClass('add-picture') ) {
+            $('#image-selector').click();
         }
 
     }

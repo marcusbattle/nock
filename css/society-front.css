@@ -23,6 +23,8 @@ body {
   margin-bottom: 40px; }
   .status .header {
     margin-bottom: 15px; }
+    .status .header .action {
+      margin: 0 4px; }
   .status .author {
     font-weight: bold; }
   .status .time-published {

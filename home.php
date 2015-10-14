@@ -8,6 +8,10 @@
 <body>
 	<div class="container" style="max-width: 600px; margin: 0 auto;">
 		<div id="status-box" class="status">
+			<div class="header">
+				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
+				<input type="file" accept="*" capture="camera" id="image-selector" style="display: none;" />
+			</div>
 			<textarea placeholder="Say something."></textarea>
 			<div>
 				<button id="post-status" class="btn btn-default">Post</button>
