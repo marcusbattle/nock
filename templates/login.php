@@ -3,6 +3,9 @@
 <head>
 	<title>A New Private Social Network</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta property="og:type"   content="website" /> 
+	<meta property="og:url"    content="http://marcusbattle.com" /> 
+	<meta property="og:title"  content="A Private Social Network by Marcus Battle" /> 
 	<?php wp_head(); ?>
 </head>
 <body>
