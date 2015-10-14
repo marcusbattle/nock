@@ -106,3 +106,15 @@ function add_status_to_home( $query ) {
 }
 
 add_action( 'pre_get_posts', 'add_status_to_home' );
+	
+function redirect_after_login( $redirect_to, $request, $user ) {
+
+	if ( $redirect_to == 'http://marcbook.local/social/wp-admin/' ) {
+		$redirect_to = home_url();
+	}
+
+	return $redirect_to;
+
+}
+
+add_filter( 'login_redirect', 'redirect_after_login', 10, 3 );
