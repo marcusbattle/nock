@@ -17,7 +17,8 @@ body {
 .status {
   border: 1px solid #eee;
   border-radius: 3px;
-  padding: 15px 15px 5px; }
+  padding: 15px 15px 5px;
+  margin-bottom: 60px; }
   .status .header {
     margin-bottom: 15px; }
   .status .author {
