@@ -6,7 +6,7 @@
 	<meta property="og:type"   content="website" /> 
 	<meta property="og:url"    content="http://marcusbattle.com" /> 
 	<meta property="og:title"  content="A Private Social Network by Marcus Battle" /> 
-	<meta property="og:description"  content="I'm building a private social network for real-life organizations. First I'll build this for my family so that we can share data with each other and close friends only. Then the world." /> 
+	<meta property="og:description"  content="Social is too public." /> 
 	<?php wp_head(); ?>
 </head>
 <body>

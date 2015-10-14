@@ -11,7 +11,8 @@ body {
     padding: 10px;
     outline: none;
     width: 100%;
-    border-radius: 3px; }
+    border-radius: 3px;
+    -webkit-appearance: none; }
 
 .status {
   border: 1px solid #eee;
