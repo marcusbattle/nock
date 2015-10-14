@@ -7,9 +7,19 @@
 </head>
 <body>
 	<div class="container" style="max-width: 600px; margin: 0 auto;">
-		<div class="row">
-			home
+		<div id="status-box">
+			<textarea placeholder="Say something."></textarea>
+			<div>
+				<button id="post-status" class="btn btn-default">Post</button>
+			</div>
 		</div>
+
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'parts/loop', 'home' ); ?>
+		<?php endwhile; else : ?>
+			<p><?php _e( 'Say something.' ); ?></p>
+		<?php endif; ?>
+		
 	</div>
 	<?php wp_footer(); ?>
 </body>

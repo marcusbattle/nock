@@ -1,0 +1,26 @@
+body {
+	/*background-color: #252830;*/
+}
+
+#status-box {
+	
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	margin-top: 10px;
+
+	textarea {
+		resize: none;
+		border: 1px solid #CCC;
+		padding: 10px;
+		outline: none;
+		width: 100%;
+		border-radius: 3px;
+	}
+
+}
+
+.status {
+	border: 1px solid #eee;
+	border-radius: 3px;
+	padding: 15px 15px 5px;
+}
