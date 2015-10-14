@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="container" style="max-width: 600px; margin: 0 auto;">
-		<div id="status-box">
+		<div id="status-box" class="status">
 			<textarea placeholder="Say something."></textarea>
 			<div>
 				<button id="post-status" class="btn btn-default">Post</button>

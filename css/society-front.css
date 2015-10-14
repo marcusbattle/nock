@@ -3,9 +3,10 @@ body {
 
 #status-box {
   box-sizing: border-box;
-  margin-bottom: 20px;
+  padding: 10px;
   margin-top: 10px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  border: 1px solid #ddd; }
   #status-box textarea {
     resize: none;
     border: 1px solid #CCC;
