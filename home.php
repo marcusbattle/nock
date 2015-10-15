@@ -7,17 +7,19 @@
 </head>
 <body>
 	<div class="container" style="max-width: 600px; margin: 0 auto;">
-		<div id="status-box" class="status">
+		<form id="status-box" class="status" enctype="multipart/form-data">
 			<div class="header">
 				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
-				<input type="file" accept="*" capture="camera" id="image-selector" style="display: none;" />
+				<input type="file" accept="image/*" id="image-selector" style="display: none;" />
 			</div>
 			<div id="image-preview"></div>
-			<textarea placeholder="Say something."></textarea>
+			<textarea name="status" placeholder="Say something."></textarea>
 			<div>
 				<button id="post-status" class="btn btn-default">Post</button>
 			</div>
-		</div>
+			<input type="hidden" name="action" value="post_status" />
+			<input type="hidden" name="image" value="" />
+		</form>
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'parts/loop', 'home' ); ?>

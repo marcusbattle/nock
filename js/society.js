@@ -13,12 +13,11 @@ window.Society = (function ( window, document, $, undefined ) {
 
     };
 
-    app.postStatus = function() {
-        
-        $.post( society.ajax_url, {
-            action: 'post_status',
-            status : $('#status-box textarea').val()
-        }, app.handlePostStatus, 'json' );
+    app.postStatus = function( click_event ) {
+
+        click_event.preventDefault();
+
+        $.post( society.ajax_url, $('#status-box').serialize(), app.handlePostStatus, 'json' );
 
     }
 
@@ -55,6 +54,7 @@ window.Society = (function ( window, document, $, undefined ) {
     app.imageIsLoaded = function( image_evenet ) {
         $('#image-preview').html('');
         $('#image-preview').append('<img src="' + image_evenet.target.result + '" alt="preview" />');
+        $('input[name="image"]').val( image_evenet.target.result );
     }
 
     $( document ).ready( app.init );

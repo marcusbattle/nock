@@ -4,7 +4,7 @@
 		<span class="author">
 			<?php 
 				if ( get_the_author_id() == get_current_user_id() ) { 
-					echo _e( "Me" );
+					echo _e( "me" );
 				} else {
 					echo the_author_meta( 'display_name' );
 				} 

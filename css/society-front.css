@@ -16,7 +16,7 @@ body {
     border-radius: 3px;
     -webkit-appearance: none; }
   #status-box #image-preview {
-    margin: 0 -10px; }
+    margin: 0 -11px; }
     #status-box #image-preview img {
       max-width: 100%;
       margin-bottom: 10px; }
