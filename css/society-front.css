@@ -9,15 +9,17 @@ body {
   border: 1px solid #ddd; }
   #status-box textarea {
     resize: none;
-    border: 1px solid #CCC;
+    border: 1px solid #DDD;
     padding: 15px;
     outline: none;
     width: 100%;
     border-radius: 3px;
     -webkit-appearance: none; }
-  #status-box #image-preview img {
-    max-width: 100%;
-    margin-bottom: 10px; }
+  #status-box #image-preview {
+    margin: 0 -10px; }
+    #status-box #image-preview img {
+      max-width: 100%;
+      margin-bottom: 10px; }
 
 .status {
   border: 1px solid #eee;

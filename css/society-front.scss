@@ -12,7 +12,7 @@ body {
 
 	textarea {
 		resize: none;
-		border: 1px solid #CCC;
+		border: 1px solid #DDD;
 		padding: 15px;
 		outline: none;
 		width: 100%;
@@ -21,6 +21,7 @@ body {
 	}
 
 	#image-preview {
+		margin: 0 -10px;
 
 		img {
 			max-width: 100%;
