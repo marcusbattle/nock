@@ -9,6 +9,7 @@ window.Society = (function ( window, document, $, undefined ) {
 
         $('body').on( 'click', '#post-status', app.postStatus );
         $('body').on( 'click', '.action a', app.doAction );
+        $('body').on( 'change', '#image-selector', app.previewImage );
 
     };
 
@@ -37,6 +38,23 @@ window.Society = (function ( window, document, $, undefined ) {
             $('#image-selector').click();
         }
 
+    }
+
+    app.previewImage = function() {
+        
+         if (this.files && this.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = app.imageIsLoaded;
+            reader.readAsDataURL( this.files[0] );
+
+        } 
+
+    }
+
+    app.imageIsLoaded = function( image_evenet ) {
+        $('#image-preview').html('');
+        $('#image-preview').append('<img src="' + image_evenet.target.result + '" alt="preview" />');
     }
 
     $( document ).ready( app.init );

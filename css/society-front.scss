@@ -20,6 +20,14 @@ body {
 		-webkit-appearance: none;
 	}
 
+	#image-preview {
+
+		img {
+			max-width: 100%;
+			margin-bottom: 10px;
+		}
+
+	}
 }
 
 .status {
@@ -34,7 +42,7 @@ body {
 		.action {
 			margin: 0 4px;
 		}
-		
+
 	}
 
 	.author {

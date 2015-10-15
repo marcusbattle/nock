@@ -12,6 +12,7 @@
 				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
 				<input type="file" accept="*" capture="camera" id="image-selector" style="display: none;" />
 			</div>
+			<div id="image-preview"></div>
 			<textarea placeholder="Say something."></textarea>
 			<div>
 				<button id="post-status" class="btn btn-default">Post</button>
