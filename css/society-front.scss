@@ -46,6 +46,14 @@ body {
 
 	}
 
+	.media {
+		margin: 15px -16px 0;
+	}
+
+	.content {
+		padding-top: 15px;
+	}
+
 	.author {
 		font-weight: bold;
 	}
@@ -54,4 +62,11 @@ body {
 		color: #CCC;
 	}
 
+	.image {
+
+		img {
+			max-width: 100%;
+		}
+
+	}
 }

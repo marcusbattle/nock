@@ -18,7 +18,9 @@
 				<button id="post-status" class="btn btn-default">Post</button>
 			</div>
 			<input type="hidden" name="action" value="post_status" />
-			<input type="hidden" name="image" value="" />
+			<input type="hidden" name="image[data]" value="" />
+			<input type="hidden" name="image[name]" value="" />
+			<input type="hidden" name="image[type]" value="" />
 		</form>
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

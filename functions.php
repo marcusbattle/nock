@@ -75,10 +75,58 @@ function society_create_post() {
 
 	$status_id = wp_insert_post( $status_args );
 
-	if ( ! is_wp_error( $status_id ) ) {
-		wp_send_json_success();
+	if ( is_wp_error( $status_id ) ) {
+		wp_send_json_error();
 	}
 
+	// upload any images
+	$upload_dir = wp_upload_dir();
+	$image_type = isset( $_POST['image']['type'] ) ? $_POST['image']['type'] : '';
+	$image_data = isset( $_POST['image']['data'] ) ? str_replace( "data:{$image_type};base64,", '', $_POST['image']['data'] ) : '';
+	$image_name = isset( $_POST['image']['name'] ) ? $_POST['image']['name'] : '';
+
+	$image_data = str_replace(' ', '+', $image_data );
+
+	if ( $image_data && $image_name && $image_type ) {
+
+		$image_name = get_current_user_id() . '-' . $image_name;
+
+		$image_path = trailingslashit( $upload_dir['path'] ) . $image_name;
+
+		if ( ! file_exists( $image_path ) ) {
+
+			$decoded_image = base64_decode( $image_data );
+			file_put_contents( $image_path, $decoded_image );
+
+		} 
+
+		$filetype = wp_check_filetype( basename( $image_path ) );
+
+		if ( $filetype ) {
+
+			$attachment = array(
+				'guid'           => $upload_dir['url'] . '/' . basename( $image_path ), 
+				'post_mime_type' => $filetype['type'],
+				'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $image_path ) ),
+				'post_content'   => '',
+				'post_status'    => 'inherit'
+			);
+
+			// Insert the attachment.
+			$attachment_id = wp_insert_attachment( $attachment, $image_path, $status_id );
+
+			// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+			require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_path );
+			wp_update_attachment_metadata( $attachment_id, $attachment_data );
+
+		}
+
+	}
+
+	wp_send_json_success();
+	
 }
 
 add_action( 'wp_ajax_post_status', 'society_create_post' );

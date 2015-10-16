@@ -30,9 +30,15 @@ body {
     margin-bottom: 15px; }
     .status .header .action {
       margin: 0 4px; }
+  .status .media {
+    margin: 15px -16px 0; }
+  .status .content {
+    padding-top: 15px; }
   .status .author {
     font-weight: bold; }
   .status .time-published {
     color: #CCC; }
+  .status .image img {
+    max-width: 100%; }
 
 /*# sourceMappingURL=society-front.css.map */

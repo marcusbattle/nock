@@ -42,19 +42,22 @@ window.Society = (function ( window, document, $, undefined ) {
     app.previewImage = function() {
         
          if (this.files && this.files[0]) {
-
+            
             var reader = new FileReader();
             reader.onload = app.imageIsLoaded;
             reader.readAsDataURL( this.files[0] );
+
+            $('input[name="image[name]"]').val( this.files[0].name );
+            $('input[name="image[type]"]').val( this.files[0].type );
 
         } 
 
     }
 
-    app.imageIsLoaded = function( image_evenet ) {
+    app.imageIsLoaded = function( image_event ) {
         $('#image-preview').html('');
-        $('#image-preview').append('<img src="' + image_evenet.target.result + '" alt="preview" />');
-        $('input[name="image"]').val( image_evenet.target.result );
+        $('#image-preview').append('<img src="' + image_event.target.result + '" alt="preview" />');
+        $('input[name="image[data]"]').val( image_event.target.result );
     }
 
     $( document ).ready( app.init );
