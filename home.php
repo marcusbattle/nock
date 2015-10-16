@@ -6,7 +6,7 @@
 	<?php wp_head(); ?>
 </head>
 <body>
-	<div class="container" style="max-width: 600px; margin: 0 auto;">
+	<div id="viewport" class="container" style="max-width: 600px; margin: 0 auto;">
 		<form id="status-box" class="status" enctype="multipart/form-data">
 			<div class="header">
 				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>

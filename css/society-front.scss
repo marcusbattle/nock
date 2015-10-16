@@ -1,5 +1,9 @@
-body {
-	/*background-color: #252830;*/
+#viewport {
+
+	&.container {
+		padding: 0;
+	}
+
 }
 
 #status-box {
@@ -69,4 +73,14 @@ body {
 		}
 
 	}
+}
+
+@media ( max-width: 400px ) {
+
+	.status {
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
+	}
+
 }
