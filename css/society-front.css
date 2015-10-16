@@ -31,7 +31,7 @@
     .status .header .action {
       margin: 0 4px; }
   .status .media {
-    margin: 15px -16px 0; }
+    margin: 15px -15px 0; }
   .status .content {
     padding-top: 15px; }
   .status .author {
@@ -42,6 +42,7 @@
     max-width: 100%; }
 
 @media (max-width: 400px) {
+  #status-box,
   .status {
     border-radius: 0;
     border-left: none;
