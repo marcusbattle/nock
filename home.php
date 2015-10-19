@@ -16,6 +16,7 @@
 			<textarea name="status" placeholder="Say something."></textarea>
 			<div>
 				<button id="post-status" class="btn btn-default">Post</button>
+				<span id="upload-percentage"></span>
 			</div>
 			<input type="hidden" name="action" value="post_status" />
 			<input type="hidden" name="image[data]" value="" />

@@ -24,8 +24,8 @@ window.Society = (function ( window, document, $, undefined ) {
             dataType: 'json',
             xhrFields: {
                 onprogress: function (e) {
-                    if (e.lengthComputable) {
-                        console.log( e.loaded / e.total * 100 + '%' );
+                    if ( e.lengthComputable ) {
+                        $('#upload-percentage').text( e.loaded / e.total * 100 + '%' );
                     }
                 }
             },
