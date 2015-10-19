@@ -10,7 +10,7 @@
 		<form id="status-box" class="status" enctype="multipart/form-data">
 			<div class="header">
 				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
-				<input type="file" accept="image/*" id="image-selector" />
+				<input type="file" accept="image/*" id="image-selector" style="display: none;" />
 			</div>
 			<div id="image-preview"></div>
 			<textarea name="status" placeholder="Say something."></textarea>
