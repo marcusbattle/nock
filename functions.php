@@ -96,8 +96,6 @@ function society_create_post() {
 
 	if ( $image_data && $image_name && $image_type ) {
 
-		$image_name = get_current_user_id() . '-' . $image_name;
-
 		$image_path = trailingslashit( $upload_dir['path'] ) . $image_name;
 
 		if ( ! file_exists( $image_path ) ) {
