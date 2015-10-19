@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div id="viewport" class="container" style="max-width: 600px; margin: 0 auto;">
-		<form id="status-box" class="status" enctype="multipart/form-data">
+		<form id="status-box" enctype="multipart/form-data">
 			<div class="header">
 				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
 				<input type="file" accept="image/*" id="image-selector" style="display: none;" />

@@ -6,6 +6,16 @@
 
 }
 
+textarea {
+	resize: none;
+	border: 1px solid #DDD;
+	padding: 15px;
+	outline: none;
+	width: 100%;
+	border-radius: 3px;
+	-webkit-appearance: none;
+}
+
 #status-box {
 	
 	box-sizing: border-box;
@@ -14,18 +24,7 @@
 	margin-bottom: 40px;
 	border: 1px solid #ddd;
 
-	textarea {
-		resize: none;
-		border: 1px solid #DDD;
-		padding: 15px;
-		outline: none;
-		width: 100%;
-		border-radius: 3px;
-		-webkit-appearance: none;
-	}
-
 	#image-preview {
-		margin: 0 -11px;
 
 		img {
 			max-width: 100%;
@@ -73,6 +72,13 @@
 		}
 
 	}
+
+	textarea {
+		border: none;
+		border-top: 1px solid #eee;
+		border-radius: 0;
+	}
+
 }
 
 @media ( max-width: 400px ) {
