@@ -86,9 +86,9 @@ function society_create_post() {
 	$upload_dir = wp_upload_dir();
 	$image_type = isset( $_POST['image']['type'] ) ? $_POST['image']['type'] : '';
 	$image_data = isset( $_POST['image']['data'] ) ? str_replace( "data:{$image_type};base64,", '', $_POST['image']['data'] ) : '';
-	$image_name = isset( $_POST['image']['name'] ) ? $user->user_login . '.' . $_POST['image']['name'] : '';
-	$image_modified = isset( $_POST['image']['modified'] ) ? $_POST['image']['modified'] : strtotime();
-
+	$image_name = isset( $_POST['image']['name'] ) ? $_POST['image']['name'] : '';
+	$image_modified = isset( $_POST['image']['modified'] ) && ! empty( $_POST['image']['modified'] ) ? $_POST['image']['modified'] : strtotime( date('Y-m-d') );
+	
 	$filetype = wp_check_filetype( basename( $image_name ) );
 	$image_name = $user->user_login . '.' . $image_modified . '.' . $filetype['ext'];
 	
