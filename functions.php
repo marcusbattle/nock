@@ -39,6 +39,7 @@ add_action( 'template_include', 'force_login' );
 
 function society_styles_and_scripts() {
 	
+	wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 	wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' );
 	wp_enqueue_style( 'society-front', get_template_directory_uri() . '/css/society-front.css' );
 
@@ -87,7 +88,7 @@ function society_create_post() {
 	$image_type = isset( $_POST['image']['type'] ) ? $_POST['image']['type'] : '';
 	$image_data = isset( $_POST['image']['data'] ) ? str_replace( "data:{$image_type};base64,", '', $_POST['image']['data'] ) : '';
 	$image_name = isset( $_POST['image']['name'] ) ? $_POST['image']['name'] : '';
-	$image_modified = isset( $_POST['image']['modified'] ) && ! empty( $_POST['image']['modified'] ) ? $_POST['image']['modified'] : strtotime( date('Y-m-d') );
+	$image_modified = isset( $_POST['image']['modified'] ) && ! empty( $_POST['image']['modified'] ) ? $_POST['image']['modified'] : strtotime( date('Y-m-d H:i:s') );
 	
 	$filetype = wp_check_filetype( basename( $image_name ) );
 	$image_name = $user->user_login . '.' . $image_modified . '.' . $filetype['ext'];
