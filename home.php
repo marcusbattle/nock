@@ -10,7 +10,7 @@
 		<form id="status-box" class="status" enctype="multipart/form-data">
 			<div class="header">
 				<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
-				<input type="file" accept="image/*" id="image-selector" style="display: none;" />
+				<input type="file" accept="image/*" id="image-selector" />
 			</div>
 			<div id="image-preview"></div>
 			<textarea name="status" placeholder="Say something."></textarea>
@@ -21,6 +21,7 @@
 			<input type="hidden" name="image[data]" value="" />
 			<input type="hidden" name="image[name]" value="" />
 			<input type="hidden" name="image[type]" value="" />
+			<input type="hidden" name="image[modified]" value="" />
 		</form>
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

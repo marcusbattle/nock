@@ -63,6 +63,9 @@ add_filter('show_admin_bar', '__return_false');
 
 function society_create_post() {
 
+	$user_id = isset( $_POST['user_id'] ) ? $_POST['user_id'] : get_current_user_id();
+	$user = get_user_by( 'id', $user_id );
+
 	if ( ! isset( $_POST['status'] ) ) {
 		wp_send_json_error();
 	}
@@ -83,8 +86,12 @@ function society_create_post() {
 	$upload_dir = wp_upload_dir();
 	$image_type = isset( $_POST['image']['type'] ) ? $_POST['image']['type'] : '';
 	$image_data = isset( $_POST['image']['data'] ) ? str_replace( "data:{$image_type};base64,", '', $_POST['image']['data'] ) : '';
-	$image_name = isset( $_POST['image']['name'] ) ? $_POST['image']['name'] : '';
+	$image_name = isset( $_POST['image']['name'] ) ? $user->user_login . '.' . $_POST['image']['name'] : '';
+	$image_modified = isset( $_POST['image']['modified'] ) ? $_POST['image']['modified'] : strtotime();
 
+	$filetype = wp_check_filetype( basename( $image_name ) );
+	$image_name = $user->user_login . '.' . $image_modified . '.' . $filetype['ext'];
+	
 	$image_data = str_replace(' ', '+', $image_data );
 
 	if ( $image_data && $image_name && $image_type ) {
@@ -100,7 +107,7 @@ function society_create_post() {
 
 		} 
 
-		$filetype = wp_check_filetype( basename( $image_path ) );
+		
 
 		if ( $filetype ) {
 
@@ -126,7 +133,7 @@ function society_create_post() {
 	}
 
 	wp_send_json_success();
-	
+
 }
 
 add_action( 'wp_ajax_post_status', 'society_create_post' );

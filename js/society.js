@@ -17,7 +17,20 @@ window.Society = (function ( window, document, $, undefined ) {
 
         click_event.preventDefault();
 
-        $.post( society.ajax_url, $('#status-box').serialize(), app.handlePostStatus, 'json' );
+        $.ajax({
+            type: 'POST',
+            url: society.ajax_url,
+            data: $('#status-box').serialize(),
+            dataType: 'json',
+            xhrFields: {
+                onprogress: function (e) {
+                    if (e.lengthComputable) {
+                        console.log( e.loaded / e.total * 100 + '%' );
+                    }
+                }
+            },
+            success: app.handlePostStatus
+        });
 
     }
 
@@ -46,9 +59,10 @@ window.Society = (function ( window, document, $, undefined ) {
             var reader = new FileReader();
             reader.onload = app.imageIsLoaded;
             reader.readAsDataURL( this.files[0] );
-
+            
             $('input[name="image[name]"]').val( this.files[0].name );
             $('input[name="image[type]"]').val( this.files[0].type );
+            $('input[name="image[modified]"]').val( this.files[0].lastModified );
 
         } 
 
