@@ -50,6 +50,8 @@ textarea {
     padding: 15px 25px; }
     .status .header .action {
       margin: 0 4px; }
+  .status .media {
+    margin: 0; }
   .status .content {
     padding: 25px; }
     .status .content p {
