@@ -55,7 +55,6 @@ textarea {
     padding: 25px; }
     .status .content p {
       line-height: 24px;
-      letter-spacing: .5px;
       margin-bottom: 30px; }
   .status .author {
     font-weight: bold; }
