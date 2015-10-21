@@ -109,9 +109,19 @@ textarea {
 		border-radius: 0;
 	}
 
-	.add-comment {
-		font-size: 24px;
-		color: #666;
+	.actions {
+		padding: 20px;
+
+		.btn-group {
+			border-color: 1px solid #eee;
+
+			button {
+				font-size: 14px;
+				color: #616a74;
+			}
+
+		}
+
 	}
 
 }
