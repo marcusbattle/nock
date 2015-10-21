@@ -25,5 +25,8 @@
 	<div class="content"><?php echo the_content(); ?></div>
 	<div>
 		<!-- <textarea placeholder="Add a comment"></textarea> -->
+		<ul>
+			<li>Tag Fram</li>
+		</ul>
 	</div>
 </div>
