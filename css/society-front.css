@@ -57,6 +57,8 @@ textarea {
     .status .content p {
       line-height: 24px;
       margin-bottom: 30px; }
+      .status .content p:last-of-type {
+        margin-bottom: 0; }
   .status .author {
     font-family: 'Bevan', serif; }
   .status .time-published {

@@ -26,10 +26,10 @@
 	<div class="actions">
 		<div class="btn-group" role="group" aria-label="Justified button group">
       		<div class="btn-group" role="group">
-		        <button type="button" class="btn btn-default">Tag Fram</button>
+		        <button type="button" class="btn btn-default btn-sm">Tag Fram</button>
 			</div>
 			<div class="btn-group" role="group">
-		        <button type="button" class="btn btn-default">Comments</button>
+		        <button type="button" class="btn btn-default btn-sm">Comments</button>
 			</div>
 	    </div>
 	</div>
