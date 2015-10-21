@@ -13,6 +13,7 @@
 	height: 44px;
 	bottom: 0;
 	box-shadow: 0 10px 20px #333;
+	z-index: 999;
 
 	> a {
 		text-align: center;
@@ -42,9 +43,17 @@ textarea {
 	
 	box-sizing: border-box;
 	padding: 10px;
-	margin-top: 10px;
 	margin-bottom: 40px;
 	border: 1px solid #ddd;
+
+	position: fixed;
+	z-index: 1000;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: #fff;
+	left: 0;
+	top: 0;
 
 	#image-preview {
 
@@ -54,6 +63,8 @@ textarea {
 		}
 
 	}
+
+	display: none;
 
 }
 
@@ -117,7 +128,9 @@ textarea {
 	}
 
 	.actions {
-		padding: 20px;
+	    margin: 0 20px;
+	    padding: 20px 0;
+	    border-top: 1px solid #F5F5F5;
 
 		.btn-group {
 			border-color: 1px solid #eee;

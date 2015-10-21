@@ -7,6 +7,7 @@ window.Society = (function ( window, document, $, undefined ) {
     // Initialize the app
     app.init = function () {
 
+        $('body').on( 'click', '#status-bar', app.showStatusBox );
         $('body').on( 'click', '#post-status', app.postStatus );
         $('body').on( 'click', '.action a', app.doAction );
         $('body').on( 'change', '#image-selector', app.previewImage );
@@ -72,6 +73,14 @@ window.Society = (function ( window, document, $, undefined ) {
         $('#image-preview').html('');
         $('#image-preview').append('<img src="' + image_event.target.result + '" alt="preview" />');
         $('input[name="image[data]"]').val( image_event.target.result );
+    }
+
+    app.showStatusBox = function( click_event ) {
+
+        click_event.preventDefault();
+
+        alert('say something');
+        
     }
 
     $( document ).ready( app.init );
