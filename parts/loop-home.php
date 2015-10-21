@@ -12,9 +12,9 @@
 		</span> 
 		<span class="time-published"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
 	</div>
-	<div class="media">
-		<?php 
-			$images = get_attached_media( 'image' );
+	<?php $images = get_attached_media( 'image' ); ?>
+	<div class="media" <?php echo ( $images ) ? '' : 'style="display: none;"'; ?>>
+		<?php
 
 			foreach ( $images as $image ) {
 				$image_url = wp_get_attachment_url( $image->ID );

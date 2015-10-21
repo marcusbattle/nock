@@ -41,6 +41,7 @@ function society_styles_and_scripts() {
 	
 	wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 	wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' );
+	wp_enqueue_style( 'fjord-font', 'https://fonts.googleapis.com/css?family=Fjord+One' );
 	wp_enqueue_style( 'society-front', get_template_directory_uri() . '/css/society-front.css' );
 
 	wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array(), '3.3.5', true );

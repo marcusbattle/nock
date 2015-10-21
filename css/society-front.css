@@ -1,5 +1,7 @@
-#viewport.container {
-  padding: 0; }
+#viewport {
+  color: #333; }
+  #viewport.container {
+    padding: 0; }
 
 #status-bar {
   position: fixed;
@@ -40,16 +42,20 @@ textarea {
 .status {
   border: 1px solid #eee;
   border-radius: 2px;
-  padding: 15px 15px 5px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  color: #616a74;
+  font-family: 'Fjord One', serif;
+  font-size: 18px; }
   .status .header {
-    margin-bottom: 15px; }
+    padding: 15px 25px; }
     .status .header .action {
       margin: 0 4px; }
-  .status .media {
-    margin: 15px -15px 0; }
   .status .content {
-    padding-top: 15px; }
+    padding: 25px; }
+    .status .content p {
+      line-height: 24px;
+      letter-spacing: .5px;
+      margin-bottom: 30px; }
   .status .author {
     font-weight: bold; }
   .status .time-published {

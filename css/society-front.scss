@@ -1,4 +1,5 @@
 #viewport {
+	color: #333;
 
 	&.container {
 		padding: 0;
@@ -53,16 +54,20 @@ textarea {
 		}
 
 	}
+
 }
 
 .status {
 	border: 1px solid #eee;
 	border-radius: 2px;
-	padding: 15px 15px 5px;
 	margin-bottom: 40px;
+	
+	color: #616a74;
+	font-family: 'Fjord One', serif;
+	font-size: 18px;
 
 	.header {
-		margin-bottom: 15px;
+		padding: 15px 25px;	
 
 		.action {
 			margin: 0 4px;
@@ -70,12 +75,17 @@ textarea {
 
 	}
 
-	.media {
-		margin: 15px -15px 0;
-	}
+	.media { }
 
 	.content {
-		padding-top: 15px;
+		padding: 25px;
+
+		p {
+			line-height: 24px;
+			letter-spacing: .5px;
+			margin-bottom: 30px;
+		}
+
 	}
 
 	.author {
