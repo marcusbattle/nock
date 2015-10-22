@@ -23,17 +23,10 @@
 		?>
 	</div>
 	<div class="content"><?php echo the_content(); ?></div>
-	<div class="comment-entry">
-		<textarea placeholder="Add a comment"></textarea>
-	</div>
 	<div class="actions">
 		<div class="btn-group" role="group" aria-label="Justified button group">
-      		<div class="btn-group" role="group">
-		        <button type="button" class="btn btn-default btn-sm">Tag Fram</button>
-			</div>
-			<div class="btn-group" role="group">
-		        <button type="button" class="btn btn-default btn-sm">Comments</button>
-			</div>
+			<a class="btn btn-default btn-sm" href="#">Tag Fram</a>
+			<a class="btn btn-default btn-sm" href="#">Comments</a>
 	    </div>
 	</div>
 </div>

@@ -80,7 +80,7 @@ textarea {
     .status .comment-entry textarea {
       border: none;
       border-radius: 0;
-      padding: 20px 0; }
+      padding: 20px 0 20px 20px; }
   .status .actions {
     margin: 0 20px;
     padding: 20px 0;
