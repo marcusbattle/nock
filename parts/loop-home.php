@@ -23,6 +23,9 @@
 		?>
 	</div>
 	<div class="content"><?php echo the_content(); ?></div>
+	<div class="comment-entry">
+		<textarea placeholder="Add a comment"></textarea>
+	</div>
 	<div class="actions">
 		<div class="btn-group" role="group" aria-label="Justified button group">
       		<div class="btn-group" role="group">
