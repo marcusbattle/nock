@@ -8,6 +8,7 @@ window.Society = (function ( window, document, $, undefined ) {
     app.init = function () {
 
         $('body').on( 'click', '#status-bar', app.showStatusBox );
+        $('body').on( 'click', '.close-box', app.hideStatusBox );
         $('body').on( 'click', '#post-status', app.postStatus );
         $('body').on( 'click', '.action a', app.doAction );
         $('body').on( 'change', '#image-selector', app.previewImage );
@@ -79,7 +80,15 @@ window.Society = (function ( window, document, $, undefined ) {
 
         click_event.preventDefault();
 
-        alert('say something');
+        $('#status-box').show();
+
+    }
+
+    app.hideStatusBox = function( click_event ) {
+
+        click_event.preventDefault();
+
+        $('#status-box').hide();
         
     }
 
