@@ -45,7 +45,8 @@ function society_styles_and_scripts() {
 	wp_enqueue_style( 'bevan-font', 'https://fonts.googleapis.com/css?family=Bevan' );
 	wp_enqueue_style( 'society-front', get_template_directory_uri() . '/css/society-front.css' );
 
-	wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array(), '3.3.5', true );
+	wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
+	wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5', true );
 	wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
 	$local_vars = array(

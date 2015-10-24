@@ -1,7 +1,7 @@
 #viewport {
   color: #333; }
   #viewport.container {
-    padding: 0; }
+    padding: 15px 0 0 0; }
 
 #status-bar {
   position: fixed;
@@ -93,6 +93,12 @@ textarea {
         font-size: 12px;
         color: #616a74;
         border-color: #eee; }
+
+.ad {
+  padding: 10px 20px;
+  color: #888;
+  border: 1px solid #F5F5F5;
+  border-radius: 2px; }
 
 @media (max-width: 400px) {
   #status-box,
