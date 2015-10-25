@@ -138,6 +138,35 @@ textarea {
     	margin-left: 10px;
 	}
 
+	.visibility {
+
+		a {
+			color: #999;
+
+			&:hover {
+				color: inherit;
+			}
+
+		}
+
+		&.private {
+
+			.fa-unlock {
+				display: none;
+			}
+
+		}
+
+		&.public {
+
+			.fa-lock {
+				display: none;
+			}
+			
+		}
+
+	}
+
 	.image { 
 
 		img {
