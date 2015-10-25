@@ -85,7 +85,9 @@ textarea {
   .status .author {
     font-family: 'Bevan', serif; }
   .status .time-published {
-    color: #CCC; }
+    color: #CCC;
+    font-size: 12px;
+    margin-left: 10px; }
   .status .image img {
     max-width: 100%; }
   .status .comment-entry {
