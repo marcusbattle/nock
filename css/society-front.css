@@ -1,5 +1,5 @@
 a {
-  color: #777; }
+  color: #616a74; }
   a:hover {
     color: #CCC; }
 
@@ -70,7 +70,7 @@ textarea {
       margin: 0 4px; }
   .status .nav {
     display: block;
-    margin: 0 20px;
+    margin: 0 10px;
     position: absolute;
     top: 13px;
     left: 0; }
