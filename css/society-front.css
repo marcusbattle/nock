@@ -94,12 +94,12 @@ textarea {
   .status .image img {
     max-width: 100%; }
   .status .comment-entry {
-    margin: 0 20px;
+    margin: 0 25px;
     border-top: 1px solid #F5F5F5; }
     .status .comment-entry textarea {
       border: none;
       border-radius: 0;
-      padding: 20px 0 20px 20px; }
+      padding: 20px 0; }
   .status .actions {
     margin: 0 20px;
     padding: 20px 0;
