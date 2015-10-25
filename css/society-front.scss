@@ -1,6 +1,16 @@
+a {
+	color: #777;
+
+	&:hover {
+		color: #CCC;
+	}
+
+}
+
 #viewport {
 	color: #333;
-
+	position: relative;
+	
 	&.container {
 		padding: 15px 0 0 0;
 	}
@@ -88,6 +98,14 @@ textarea {
 
 	}
 
+	.nav {
+		display: block;
+		margin: 0 20px;
+		position: absolute;
+		top: 13px;
+		left: 0;
+	}
+
 	.media { 
 		margin: 0;
 	}
@@ -153,13 +171,19 @@ textarea {
 
 	}
 
+	&.single {
+		margin-top: 30px;
+	}
+
 }
 
 .ad {
-	padding: 10px 20px;
+	padding: 5px 20px;
 	color: #888;
 	border: 1px solid #F5F5F5;
 	border-radius: 2px;
+	margin: 20px 20px 20px 10px;
+	max-width: 80%;
 }
 
 @media ( max-width: 400px ) {

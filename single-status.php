@@ -15,7 +15,7 @@
 		
 		<div class="ad">
 			<h4>Ad</h4>
-			<p>Here is an ad. They free the network.</p>
+			<p>Here is an ad. They keep the network free.</p>
 		</div>
 	</div>
 	<?php wp_footer(); ?>

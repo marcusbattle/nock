@@ -1,4 +1,7 @@
-<div class="status">
+<div class="status single">
+	<div class="nav">
+		<a href="<?php echo home_url(); ?>"><i class="fa fa-chevron-left"></i></a>
+	</div>
 	<div class="header">
 		<span class="avatar"></span>
 		<span class="author">
@@ -23,7 +26,4 @@
 		?>
 	</div>
 	<div class="content"><?php echo the_content(); ?></div>
-	<div class="actions">
-		<a href="<?php echo home_url(); ?>">Back</a>
-	</div>
 </div>
