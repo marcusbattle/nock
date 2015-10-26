@@ -93,6 +93,12 @@ textarea {
 	.header {
 		padding: 15px 25px;	
 
+		.avatar {
+			overflow: hidden;
+			border-radius: 5px;
+			margin-right: 5px;
+		}
+
 		.action {
 			margin: 0 4px;
 		}
@@ -176,7 +182,7 @@ textarea {
 	}
 
 	#comment-entry {
-		margin: 0 25px;
+		margin: 15px 25px 0;
 	    border-top: 1px solid #F5F5F5;
 
 	    textarea {
@@ -209,9 +215,21 @@ textarea {
 		margin-top: 30px;
 	}
 
-	.comment {
-		padding: 10px 0;
-		margin: 0 25px;
+	#comments {
+		border-top: 1px solid #eee;
+    	padding-top: 10px;
+	}
+	
+	.comment-author {
+		color: #616a74;
+		margin-right: 5px;
+	}
+
+	.comment {	
+		padding: 7px 0;
+	    margin: 0 25px;
+	    color: #888;
+	    font-size: 14px;
 	}
 
 }

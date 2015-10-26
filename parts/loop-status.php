@@ -3,7 +3,7 @@
 		<a href="<?php echo home_url(); ?>"><i class="fa fa-chevron-left"></i></a>
 	</div>
 	<div class="header">
-		<span class="avatar"></span>
+		<span class="avatar"><?php echo get_avatar( get_the_author_id(), 75 ); ?> </span>
 		<span class="author">
 			<?php 
 				if ( get_the_author_id() == get_current_user_id() ) { 
@@ -34,7 +34,8 @@
 			if ( $comments ) {
 
 				foreach ( $comments as $comment ) {
-					echo "<div class=\"comment\"><span>{$comment_author}</span>{$comment->comment_content}</div>";
+					$comment_author = 'author';
+					echo "<div class=\"comment\"><span class=\"comment-author\">{$comment_author}</span>{$comment->comment_content}</div>";
 				}
 
 			}

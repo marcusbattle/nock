@@ -97,6 +97,8 @@ window.Society = (function ( window, document, $, undefined ) {
 
         if( keyup_event.keyCode == 13){
             
+            keyup_event.preventDefault();
+            
             var comment = $(this);
 
             $.ajax({

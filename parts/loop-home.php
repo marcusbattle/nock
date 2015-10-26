@@ -1,6 +1,6 @@
 <div class="status">
 	<div class="header">
-		<span class="avatar"></span>
+		<span class="avatar"><?php echo get_avatar( get_the_author_id(), 40 ); ?> </span>
 		<span class="author">
 			<?php 
 				if ( get_the_author_id() == get_current_user_id() ) { 

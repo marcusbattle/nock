@@ -66,6 +66,10 @@ textarea {
   font-size: 16px; }
   .status .header {
     padding: 15px 25px; }
+    .status .header .avatar {
+      overflow: hidden;
+      border-radius: 5px;
+      margin-right: 5px; }
     .status .header .action {
       margin: 0 4px; }
   .status .nav {
@@ -102,7 +106,7 @@ textarea {
   .status .image img {
     max-width: 100%; }
   .status #comment-entry {
-    margin: 0 25px;
+    margin: 15px 25px 0;
     border-top: 1px solid #F5F5F5; }
     .status #comment-entry textarea {
       border: none;
@@ -120,9 +124,17 @@ textarea {
         border-color: #eee; }
   .status.single {
     margin-top: 30px; }
+  .status #comments {
+    border-top: 1px solid #eee;
+    padding-top: 10px; }
+  .status .comment-author {
+    color: #616a74;
+    margin-right: 5px; }
   .status .comment {
-    padding: 10px 0;
-    margin: 0 25px; }
+    padding: 7px 0;
+    margin: 0 25px;
+    color: #888;
+    font-size: 14px; }
 
 .ad {
   padding: 5px 20px 5px 15px;
