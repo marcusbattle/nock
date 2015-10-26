@@ -106,8 +106,7 @@ textarea {
   .status .image img {
     max-width: 100%; }
   .status #comment-entry {
-    margin: 15px 25px 0;
-    border-top: 1px solid #F5F5F5; }
+    margin: 0 25px; }
     .status #comment-entry textarea {
       border: none;
       border-radius: 0;
@@ -129,7 +128,8 @@ textarea {
     padding-top: 10px; }
   .status .comment-author {
     color: #616a74;
-    margin-right: 5px; }
+    margin-right: 5px;
+    font-family: 'Bevan', serif; }
   .status .comment {
     padding: 7px 0;
     margin: 0 25px;

@@ -182,8 +182,7 @@ textarea {
 	}
 
 	#comment-entry {
-		margin: 15px 25px 0;
-	    border-top: 1px solid #F5F5F5;
+		margin: 0 25px;
 
 	    textarea {
 			border: none;
@@ -219,10 +218,11 @@ textarea {
 		border-top: 1px solid #eee;
     	padding-top: 10px;
 	}
-	
+
 	.comment-author {
 		color: #616a74;
 		margin-right: 5px;
+		font-family: 'Bevan', serif;
 	}
 
 	.comment {	
