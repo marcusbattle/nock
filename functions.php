@@ -175,3 +175,36 @@ function redirect_after_login( $redirect_to, $request, $user ) {
 }
 
 add_filter( 'login_redirect', 'redirect_after_login', 10, 3 );
+
+function society_add_comment() {
+
+	$status_id = isset( $_POST['status_id'] ) ? $_POST['status_id'] : 0;
+	$comment = isset( $_POST['comment'] ) ? $_POST['comment'] : 0;
+	$user_id = get_current_user_id();
+
+	if ( ! $status_id ) {
+		return false;
+	}
+
+	$data = array(
+	    'comment_post_ID' => $status_id,
+	    'comment_content' => $comment,
+	    'comment_parent' => 0,
+	    'user_id' => $user_id,
+	    'comment_date' => $time,
+	    'comment_approved' => 1,
+	);
+
+	$comment_id = wp_insert_comment( $data );
+
+	if ( is_wp_error( $comment_id ) ) {
+		wp_send_json_error();
+	}
+
+	wp_send_json_success();
+
+}
+
+add_action( 'wp_ajax_post_comment', 'society_add_comment' );
+
+

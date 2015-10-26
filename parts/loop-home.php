@@ -27,7 +27,7 @@
 	<div class="actions">
 		<div class="btn-group" role="group" aria-label="Justified button group">
 			<!-- <a class="btn btn-default btn-sm" href="#">Tag Fram</a> -->
-			<a class="btn btn-default" href="<?php the_permalink(); ?>#comments">Comments (0)</a>
+			<a class="btn btn-default" href="<?php the_permalink(); ?>#comments">Comments (<?php echo get_comments_number() ?>)</a>
 			<a class="btn btn-default">Tagged (0)</a>
 	    </div>
 	</div>

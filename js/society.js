@@ -97,8 +97,22 @@ window.Society = (function ( window, document, $, undefined ) {
 
         if( keyup_event.keyCode == 13){
             
-            $('#comment-entry').before( '<div class="comment">' + $(this).val() + '</div>' );
-            $(this).val('');
+            var comment = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: society.ajax_url,
+                data: {
+                    action : 'post_comment',
+                    status_id : $('#comments').data('status-id'),
+                    comment : $(comment).val()
+                },
+                dataType: 'json',
+                success: function() {
+                    $('#comment-entry').before( '<div class="comment">' + $(comment).val() + '</div>' );
+                    $(comment).val('');
+                }
+            });
 
         }
 

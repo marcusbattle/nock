@@ -1,4 +1,4 @@
-<div class="status single">
+<div id="<?php echo get_the_ID(); ?>" class="status single">
 	<div class="nav">
 		<a href="<?php echo home_url(); ?>"><i class="fa fa-chevron-left"></i></a>
 	</div>
@@ -27,7 +27,18 @@
 		?>
 	</div>
 	<div class="content"><?php echo the_content(); ?></div>
-	<div id="comments">
+	<div id="comments" data-status-id="<?php echo get_the_ID(); ?>">
+		<?php 
+			$comments = get_comments( array( 'post_id' => get_the_ID(), 'order' => 'ASC' ) ); 
+
+			if ( $comments ) {
+
+				foreach ( $comments as $comment ) {
+					echo "<div class=\"comment\"><span>{$comment_author}</span>{$comment->comment_content}</div>";
+				}
+
+			}
+		?>
 		<div id="comment-entry">
 			<textarea placeholder="Add a comment"></textarea>
 		</div>
