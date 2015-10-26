@@ -28,7 +28,7 @@
 	</div>
 	<div class="content"><?php echo the_content(); ?></div>
 	<div id="comments">
-		<div class="comment-entry">
+		<div id="comment-entry">
 			<textarea placeholder="Add a comment"></textarea>
 		</div>
 	</div>

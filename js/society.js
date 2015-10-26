@@ -12,6 +12,7 @@ window.Society = (function ( window, document, $, undefined ) {
         $('body').on( 'click', '#post-status', app.postStatus );
         $('body').on( 'click', '.action a', app.doAction );
         $('body').on( 'change', '#image-selector', app.previewImage );
+        $('body').on( 'keyup', '#comment-entry textarea', app.addComment );
 
     };
 
@@ -90,6 +91,17 @@ window.Society = (function ( window, document, $, undefined ) {
 
         $('#status-box').hide();
         
+    }
+
+    app.addComment = function( keyup_event ) {
+
+        if( keyup_event.keyCode == 13){
+            
+            $('#comment-entry').before( '<div class="comment">' + $(this).val() + '</div>' );
+            $(this).val('');
+
+        }
+
     }
 
     $( document ).ready( app.init );

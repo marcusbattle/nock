@@ -101,10 +101,10 @@ textarea {
     display: none; }
   .status .image img {
     max-width: 100%; }
-  .status .comment-entry {
+  .status #comment-entry {
     margin: 0 25px;
     border-top: 1px solid #F5F5F5; }
-    .status .comment-entry textarea {
+    .status #comment-entry textarea {
       border: none;
       border-radius: 0;
       padding: 20px 0; }
@@ -120,6 +120,9 @@ textarea {
         border-color: #eee; }
   .status.single {
     margin-top: 30px; }
+  .status .comment {
+    padding: 10px 0;
+    margin: 0 25px; }
 
 .ad {
   padding: 5px 20px 5px 15px;
