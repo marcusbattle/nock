@@ -11,7 +11,7 @@
 			?>
 		</span> 
 		<span class="time-published"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
-		<span class="visibility private pull-right"><a href="#"><i class="fa fa-lock"></i><i class="fa fa-unlock"></i></a></span>
+		<span class="visibility private pull-right"><a href="#<?php echo get_the_ID(); ?>"><i class="fa fa-lock"></i><i class="fa fa-unlock"></i></a></span>
 	</div>
 	<?php $images = get_attached_media( 'image' ); ?>
 	<div class="media" <?php echo ( $images ) ? '' : 'style="display: none;"'; ?>>
@@ -30,6 +30,6 @@
 			<a class="btn btn-default" href="<?php the_permalink(); ?>#comments">Comments (<?php echo get_comments_number() ?>)</a>
 			<a class="btn btn-default">Tagged (0)</a>
 	    </div>
-	    <a class="topic new" href="#">#Topic</a>
+	    <a class="topic new" href="#<?php echo get_the_ID(); ?>">#Topic</a>
 	</div>
 </div>
