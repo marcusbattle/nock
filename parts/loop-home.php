@@ -1,4 +1,4 @@
-<div class="status">
+<div id="<?php echo get_the_ID(); ?>" class="status">
 	<div class="header">
 		<span class="avatar"><?php echo get_avatar( get_the_author_id(), 40 ); ?> </span>
 		<span class="author">
@@ -30,5 +30,6 @@
 			<a class="btn btn-default" href="<?php the_permalink(); ?>#comments">Comments (<?php echo get_comments_number() ?>)</a>
 			<a class="btn btn-default">Tagged (0)</a>
 	    </div>
+	    <a class="topic new" href="#">#Topic</a>
 	</div>
 </div>

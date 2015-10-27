@@ -1,6 +1,6 @@
 <div id="<?php echo get_the_ID(); ?>" class="status single">
 	<div class="nav">
-		<a href="<?php echo home_url(); ?>"><i class="fa fa-chevron-left"></i></a>
+		<a href="<?php echo home_url( '#' . get_the_ID() ); ?>"><i class="fa fa-chevron-left"></i></a>
 	</div>
 	<div class="header">
 		<span class="avatar"><?php echo get_avatar( get_the_author_id(), 40 ); ?> </span>
