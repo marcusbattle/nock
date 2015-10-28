@@ -10,8 +10,9 @@
 				} 
 			?>
 		</span> 
-		<span class="time-published"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span> in <span class="group">Group</span>
+		<span class="time-published"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
 		<span class="visibility private pull-right"><a href="#<?php echo get_the_ID(); ?>"><i class="fa fa-lock"></i><i class="fa fa-unlock"></i></a></span>
+		<span class="group">Group</span>
 	</div>
 	<?php $images = get_attached_media( 'image' ); ?>
 	<div class="media" <?php echo ( $images ) ? '' : 'style="display: none;"'; ?>>
