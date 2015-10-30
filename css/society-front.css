@@ -7,14 +7,14 @@ a {
   color: #333;
   position: relative; }
   #viewport.container {
-    padding: 15px 0 0 0; }
+    padding: 60px 0 0 0; }
 
 #status-bar,
 #nav-bar {
   position: fixed;
   width: 100%;
-  bottom: 0;
-  box-shadow: 0 10px 20px #333;
+  top: 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   z-index: 999;
   background-color: #fff; }
   #status-bar > a,
@@ -31,15 +31,19 @@ a {
   #status-bar .btn-group,
   #nav-bar .btn-group {
     max-width: 600px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    padding: 0 20px; }
     #status-bar .btn-group .btn,
     #nav-bar .btn-group .btn {
       border-radius: 0;
       padding: 11px 12px;
       border-top: none;
-      border-bottom: none; }
-      #status-bar .btn-group .btn:first-of-type,
-      #nav-bar .btn-group .btn:first-of-type {
+      border-bottom: none;
+      border-left: none;
+      border-right: none; }
+      #status-bar .btn-group .btn:first-child,
+      #nav-bar .btn-group .btn:first-child {
+        margin: 0 20px;
         border-right: none; }
       #status-bar .btn-group .btn:last-of-type,
       #nav-bar .btn-group .btn:last-of-type {
