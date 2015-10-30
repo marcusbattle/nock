@@ -32,9 +32,10 @@
 		<?php endif; ?>
 		
 	</div>
-	<div id="status-bar">
+	<!-- <div id="status-bar">
 		<a href="#">Say something.</a>
-	</div>
+	</div> -->
+	<?php get_footer(); ?>
 	<?php wp_footer(); ?>
 </body>
 </html>
