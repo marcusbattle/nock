@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="social">
 <head>
+	<base href="/social/">
 	<title>A New Private Social Network</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<?php wp_head(); ?>
@@ -25,12 +26,7 @@
 			<input type="hidden" name="image[type]" value="" />
 			<input type="hidden" name="image[modified]" value="" />
 		</form>
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'parts/loop', 'home' ); ?>
-		<?php endwhile; else : ?>
-			<p><?php _e( 'Say something.' ); ?></p>
-		<?php endif; ?>
-		
+		<div ng-view></div>
 	</div>
 	<!-- <div id="status-bar">
 		<a href="#">Say something.</a>

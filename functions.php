@@ -46,14 +46,18 @@ function society_styles_and_scripts() {
 	wp_enqueue_style( 'society-front', get_template_directory_uri() . '/css/society-front.css' );
 
 	wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
+	wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('jquery'), '1.4.7', true );
+	wp_enqueue_script( 'angular-route', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js', array('jquery'), '1.4.7', true );
+
 	wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5', true );
+	wp_enqueue_script( 'social', get_template_directory_uri() . '/js/social.js', array( 'jquery', 'angular-resource', 'angular-route' ), '0.1.0', true );
 	wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
 	$local_vars = array(
-		'ajax_url' => admin_url( 'admin-ajax.php' ),
+		'views' => get_template_directory_uri() . '/views'
 	);
 
-	wp_localize_script( 'society-front', 'society', $local_vars );
+	wp_localize_script( 'social', 'social', $local_vars );
 
 }
 
