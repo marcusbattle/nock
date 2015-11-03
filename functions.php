@@ -211,4 +211,14 @@ function society_add_comment() {
 
 add_action( 'wp_ajax_post_comment', 'society_add_comment' );
 
+function get_site_path() {
 
+	$home_url_parts = parse_url( home_url() );
+
+	if ( isset( $home_url_parts['path'] ) && ! empty( $home_url_parts['path'] ) ) {
+		return trailingslashit( $home_url_parts['path'] );
+	}
+	
+	return '/';
+
+}
