@@ -80,7 +80,9 @@ textarea {
     margin-bottom: 10px; }
 
 .data-list {
-  list-style: none; }
+  list-style: none;
+  margin: 0;
+  padding: 0; }
 
 .cell {
   position: relative;
