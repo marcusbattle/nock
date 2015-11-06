@@ -10,7 +10,6 @@
 	<div id="viewport" class="container" style="max-width: 600px; margin: 0 auto;">
 		<div ng-view></div>
 	</div>
-	<?php get_footer(); ?>
 	<?php wp_footer(); ?>
 </body>
 </html>

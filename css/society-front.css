@@ -79,7 +79,8 @@ textarea {
     max-width: 100%;
     margin-bottom: 10px; }
 
-.status {
+.status,
+.group {
   position: relative;
   border: 1px solid #eee;
   border-radius: 2px;
@@ -87,16 +88,20 @@ textarea {
   color: #616a74;
   font-family: 'Arvo', serif;
   font-size: 16px; }
-  .status .header {
+  .status .header,
+  .group .header {
     padding: 15px 25px;
     font-size: 12px; }
-    .status .header .avatar {
+    .status .header .avatar,
+    .group .header .avatar {
       overflow: hidden;
       border-radius: 5px;
       margin-right: 5px; }
-    .status .header .action {
+    .status .header .action,
+    .group .header .action {
       margin: 0 4px; }
-    .status .header .group {
+    .status .header .group,
+    .group .header .group {
       background-color: #616a74;
       color: #eee;
       font-size: 14px;
@@ -104,69 +109,91 @@ textarea {
       position: absolute;
       right: 0;
       top: 50px; }
-  .status .nav {
+  .status .nav,
+  .group .nav {
     display: block;
     margin: 0 10px;
     position: absolute;
     top: 13px;
     left: 0; }
-  .status .media {
+  .status .media,
+  .group .media {
     margin: 0;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee; }
-  .status .content {
+  .status .content,
+  .group .content {
     padding: 25px; }
-    .status .content p {
+    .status .content p,
+    .group .content p {
       line-height: 24px;
       margin-bottom: 30px; }
-      .status .content p:last-of-type {
+      .status .content p:last-of-type,
+      .group .content p:last-of-type {
         margin-bottom: 0; }
-  .status .author {
+  .status .author,
+  .group .author {
     font-family: 'Bevan', serif;
     font-size: 16px; }
-  .status .time-published {
+  .status .time-published,
+  .group .time-published {
     color: #CCC;
     font-size: 12px;
     margin-left: 6px; }
-  .status .visibility a {
+  .status .visibility a,
+  .group .visibility a {
     color: #999; }
-    .status .visibility a:hover {
+    .status .visibility a:hover,
+    .group .visibility a:hover {
       color: inherit; }
-  .status .visibility.private .fa-unlock {
+  .status .visibility.private .fa-unlock,
+  .group .visibility.private .fa-unlock {
     display: none; }
-  .status .visibility.public .fa-lock {
+  .status .visibility.public .fa-lock,
+  .group .visibility.public .fa-lock {
     display: none; }
-  .status .image img {
+  .status .image img,
+  .group .image img {
     max-width: 100%; }
-  .status #comment-entry {
+  .status #comment-entry,
+  .group #comment-entry {
     margin: 0 25px; }
-    .status #comment-entry textarea {
+    .status #comment-entry textarea,
+    .group #comment-entry textarea {
       border: none;
       border-radius: 0;
       padding: 20px 0; }
-  .status .actions {
+  .status .actions,
+  .group .actions {
     margin: 0 20px;
     padding: 20px 0;
     border-top: 1px solid #F5F5F5; }
-    .status .actions .btn-group {
+    .status .actions .btn-group,
+    .group .actions .btn-group {
       border-color: 1px solid #eee; }
-      .status .actions .btn-group .btn {
+      .status .actions .btn-group .btn,
+      .group .actions .btn-group .btn {
         font-size: 12px;
         color: #616a74;
         border-color: #eee; }
-    .status .actions .topic {
+    .status .actions .topic,
+    .group .actions .topic {
       margin-left: 10px;
       font-size: 14px; }
-  .status.single {
+  .status.single,
+  .group.single {
     margin-top: 30px; }
-  .status #comments {
+  .status #comments,
+  .group #comments {
     border-top: 1px solid #eee;
     padding-top: 10px; }
-  .status .comment-author {
+  .status .comment-author,
+  .group .comment-author {
     color: #616a74;
     margin-right: 5px;
     font-family: 'Bevan', serif; }
-  .status .comment {
+  .status .comment,
+  .group .comment {
     padding: 7px 0;
     margin: 0 25px;
     color: #888;

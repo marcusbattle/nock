@@ -11,12 +11,16 @@ angular.module('social', ['ngRoute'] )
 			.when('/status/:ID', {
 				templateUrl: social.views + '/status-single.php',
 				controller: 'Single'
+			})
+			.when('/groups', {
+				templateUrl: social.views + '/groups-home.php',
+				controller: 'Groups'
 			});
 
 	})
     .controller( 'Home', function( $scope, $http, $routeParams ) {
     
-    	$http.get('wp-json/social-api/v1/statuses/').success( function( response ) {
+    	$http.get( 'wp-json/social-api/v1/statuses/' ).success( function( response ) {
 			$scope.statuses = response;
 		});
         
@@ -25,6 +29,13 @@ angular.module('social', ['ngRoute'] )
 		
 		$http.get( 'wp-json/social-api/v1/statuses/' + $routeParams.ID ).success( function( response ) {
 			$scope.status = response;
+		});
+
+	})
+	.controller( 'Groups', function( $scope, $http, $routeParams ) {
+		
+		$http.get( 'wp-json/social-api/v1/groups/' ).success( function( response ) {
+			$scope.groups = response;
 		});
 
 	});
