@@ -1,4 +1,4 @@
-<div class="status" ng-repeat="status in statuses">
+<div class="status cell" ng-repeat="status in statuses">
 	<div class="header">
 		<span class="avatar"></span>
 		<span class="author">{{status.author}}</span> 

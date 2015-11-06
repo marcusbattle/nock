@@ -109,12 +109,35 @@ textarea {
 
 }
 
-.status,
-.group {
+.data-list {
+	list-style: none;
+}
+
+.cell {
 	position: relative;
 	border: 1px solid #eee;
+	display: block;
+	width: 100%;
+	padding: 15px 25px;
+
+}
+
+.group {
+
+	&:first-child {
+		border-bottom: none;
+	}
+
+	&:last-child {
+		border-top: none;
+	}
+	
+}
+
+.status {
 	border-radius: 2px;
 	margin-bottom: 40px;
+	padding: 0;
 
 	color: #616a74;
 	font-family: 'Arvo', serif;

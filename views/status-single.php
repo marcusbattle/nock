@@ -1,4 +1,4 @@
-<div class="status single">
+<div class="status single cell">
 	<div class="nav">
 		<a href="#{{status.ID}}"><i class="fa fa-chevron-left"></i></a>
 	</div>

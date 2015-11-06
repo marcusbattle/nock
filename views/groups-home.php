@@ -1,4 +1,7 @@
-<div class="group" ng-repeat="group in groups">
-	<span>{{group.name}}</span>
-	<div class="content">{{group.description}}</div>
-</div>
+<ul class="data-list">
+	<li class="group cell" ng-repeat="group in groups">
+		<a href="{{group.link}}">
+			<span>{{group.name}}</span>
+		</a>
+	</li>
+</ul>

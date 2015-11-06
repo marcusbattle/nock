@@ -15,6 +15,10 @@ angular.module('social', ['ngRoute'] )
 			.when('/groups', {
 				templateUrl: social.views + '/groups-home.php',
 				controller: 'Groups'
+			})
+			.when('/groups/:ID', {
+				templateUrl: social.views + '/single-group.php',
+				controller: 'SingleGroup'
 			});
 
 	})
