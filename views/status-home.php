@@ -6,7 +6,7 @@
 		<span class="visibility private pull-right"><a href="#"><i class="fa fa-lock"></i><i class="fa fa-unlock"></i></a></span>
 		<span class="group">Group{{status.group}}</span>
 	</div>
-	<div class="media">{{status.image_html}}</div>
+	<div class="media"><div class="image"><img src="{{status.image_url}}" /></div></div>
 	<div class="content">{{status.post_content}}</div>
 	<div class="actions">
 		<div class="btn-group" role="group" aria-label="Justified button group">
