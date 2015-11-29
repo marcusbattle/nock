@@ -27,8 +27,8 @@
 			<input type="hidden" name="image[modified]" value="" />
 		</form>
 		<div ng-view></div>
+		<?php if ( is_user_logged_in() ) get_footer(); ?>
 	</div>
-	<?php get_footer(); ?>
 	<?php wp_footer(); ?>
 </body>
 </html>

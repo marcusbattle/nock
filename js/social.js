@@ -8,6 +8,10 @@ angular.module('social', ['ngRoute'] )
 				templateUrl: social.views + '/status-home.php',
 				controller: 'Home'
 			})
+			.when('/signup', {
+				templateUrl: social.views + '/signup.php',
+				controller: 'Signup'
+			})
 			.when('/status/:ID', {
 				templateUrl: social.views + '/status-single.php',
 				controller: 'Single'
@@ -28,6 +32,17 @@ angular.module('social', ['ngRoute'] )
 			$scope.statuses = response;
 		});
         
+    })
+    .controller( 'Signup', function( $scope, $http, $routeParams ) {
+
+    	// create a blank object to hold our form information
+		// $scope will allow this to pass between controller and view
+		$scope.formData = {};
+
+		$scope.submit = function() {
+			alert('come on bruh!');
+		}
+
     })
     .controller( 'Single', function( $scope, $http, $routeParams ) {
 		

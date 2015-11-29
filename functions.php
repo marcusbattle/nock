@@ -6,6 +6,14 @@
  */
 function redirect_non_logged_in_users() {
 
+	global $wp;
+
+	$pages = array( 'signup' );
+
+	if ( in_array( $wp->request, $pages ) ) {
+		return;
+	}
+
     if ( ! is_home() && ! is_user_logged_in() ) {
     	
     	wp_redirect( home_url(), 301 );
