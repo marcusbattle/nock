@@ -1,6 +1,8 @@
 angular.module('social', ['ngRoute'] )
-	.config( function( $routeProvider, $locationProvider) {
+	.config( function( $routeProvider, $locationProvider, $httpProvider ) {
 		
+		$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+
 		$locationProvider.html5Mode( true );
 
 		$routeProvider
@@ -33,14 +35,31 @@ angular.module('social', ['ngRoute'] )
 		});
         
     })
+    .controller( 'Login', function( $scope, $http, $routeParams ) {
+    	
+    	$scope.formData = {};
+
+        $scope.submit = function() {
+
+        	$http.post( 'wp-json/nock-app/v1/login', $scope.formData ).success(function(data){ 
+				console.log( data );
+			});
+
+        }
+
+    })
     .controller( 'Signup', function( $scope, $http, $routeParams ) {
 
-    	// create a blank object to hold our form information
-		// $scope will allow this to pass between controller and view
 		$scope.formData = {};
 
 		$scope.submit = function() {
-			alert('come on bruh!');
+
+			console.log( JSON.stringify( $scope.formData ) );
+
+			$http.post( 'wp-json/social-api/v1/request_access', $scope.formData ).success(function(data){ 
+				console.log( data );
+			});
+
 		}
 
     })

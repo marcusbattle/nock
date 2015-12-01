@@ -51,7 +51,7 @@ function society_styles_and_scripts() {
 	wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' );
 	wp_enqueue_style( 'fjord-font', 'https://fonts.googleapis.com/css?family=Arvo' );
 	wp_enqueue_style( 'bevan-font', 'https://fonts.googleapis.com/css?family=Bevan' );
-	wp_enqueue_style( 'society-front', get_template_directory_uri() . '/css/society-front.css' );
+	wp_enqueue_style( 'societwy-front', get_template_directory_uri() . '/css/society-front.css' );
 
 	wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
 	wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('jquery'), '1.4.7', true );
@@ -62,10 +62,12 @@ function society_styles_and_scripts() {
 	wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
 	$local_vars = array(
-		'views' => get_template_directory_uri() . '/views'
+		'views' => get_template_directory_uri() . '/views',
 	);
 
 	wp_localize_script( 'social', 'social', $local_vars );
+
+	add_action( 'rest_api_init', 'register_routes' );
 
 }
 
@@ -228,5 +230,20 @@ function get_site_path() {
 	}
 	
 	return '/';
+
+}
+
+function register_routes() {
+	
+	register_rest_route( 'nock-app/v1', '/login', array(
+        'methods' => 'POST',
+        'callback' => 'POST_proxy_login',
+    ) );
+
+}
+
+function POST_proxy_login() {
+
+	echo "smoke this thing"; exit;
 
 }
