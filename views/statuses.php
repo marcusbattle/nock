@@ -10,7 +10,7 @@
 	<div class="content">{{status.post_content}}</div>
 	<div class="actions">
 		<div class="btn-group" role="group" aria-label="Justified button group">
-			<a class="btn btn-default" href="{{status.guid}}#comments">Comments ({{status.comment_count}})</a>
+			<a class="btn btn-default" href="{{status.link}}#comments">Comments ({{status.comment_count}})</a>
 	    </div>
 	</div>
 </div>

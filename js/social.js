@@ -1,22 +1,24 @@
-angular.module('social', ['ngRoute'] )
-	.config( function( $routeProvider, $locationProvider, $httpProvider ) {
+var nock_app = angular.module('social', ['ngRoute','ngCookies'] );
+
+
+nock_app.config( function( $routeProvider, $locationProvider, $httpProvider ) {
 		
 		$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
-		$locationProvider.html5Mode( true );
+		$locationProvider.html5Mode( true ); //Remove the '#' from URL.
 
-		$routeProvider
+		$routeProvider			
 			.when('/', {
-				templateUrl: social.views + '/status-home.php',
+				templateUrl: social.views + '/statuses.php',
 				controller: 'Home'
+			})
+			.when('/status/:ID', {
+				templateUrl: social.views + '/status.php',
+				controller: 'Single'
 			})
 			.when('/signup', {
 				templateUrl: social.views + '/signup.php',
 				controller: 'Signup'
-			})
-			.when('/status/:ID', {
-				templateUrl: social.views + '/status-single.php',
-				controller: 'Single'
 			})
 			.when('/groups', {
 				templateUrl: social.views + '/groups-home.php',
@@ -25,24 +27,53 @@ angular.module('social', ['ngRoute'] )
 			.when('/groups/:ID', {
 				templateUrl: social.views + '/single-group.php',
 				controller: 'SingleGroup'
-			});
+			})
+			.when('/networks', {
+				templateUrl: social.views + '/networks.php',
+				controller: 'Networks'
+			})
+			.otherwise({
+		       redirectTo: '/'
+		    });
 
-	})
-    .controller( 'Home', function( $scope, $http, $routeParams ) {
-    
-    	$http.get( 'wp-json/social-api/v1/statuses/' ).success( function( response ) {
+	});
+
+nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
+    	
+    	$http.get( 'wp-json/nock-app/v1/statuses' ).success( function( response ) {
 			$scope.statuses = response;
 		});
         
     })
-    .controller( 'Login', function( $scope, $http, $routeParams ) {
+    .controller( 'Networks', function( $scope, $http, $routeParams, $cookies ) {
+
+    	$http.get( 'wp-json/nock-app/v1/networks' ).success( function( response ) {
+			$scope.networks = response;
+		});
+
+    	$scope.setNetwork = function( item ) {
+    		console.log( item.currentTarget.dataset['networkId'] );
+    	}
+
+    })
+    .controller( 'Login', function( $scope, $cookies, $http, $routeParams ) {
     	
     	$scope.formData = {};
 
         $scope.submit = function() {
 
-        	$http.post( 'wp-json/nock-app/v1/login', $scope.formData ).success(function(data){ 
-				console.log( data );
+        	$http.post( 'wp-json/nock-app/v1/login', $scope.formData ).success( function( data ) { 
+				
+				if ( data.success ) {
+					
+					$cookies.put( 'logged_in', true );
+
+					window.location.reload();
+
+				} else {
+
+				}
+
 			});
 
         }
@@ -54,10 +85,14 @@ angular.module('social', ['ngRoute'] )
 
 		$scope.submit = function() {
 
-			console.log( JSON.stringify( $scope.formData ) );
-
 			$http.post( 'wp-json/social-api/v1/request_access', $scope.formData ).success(function(data){ 
-				console.log( data );
+				
+				if ( data.success ) {
+
+				} else {
+
+				}
+
 			});
 
 		}
@@ -67,6 +102,7 @@ angular.module('social', ['ngRoute'] )
 		
 		$http.get( 'wp-json/social-api/v1/statuses/' + $routeParams.ID ).success( function( response ) {
 			$scope.status = response;
+			$scope.comments = response.comments;
 		});
 
 	})

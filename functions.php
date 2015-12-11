@@ -1,77 +1,122 @@
 <?php
 
-/**
- * Redirects non-logged in users to the home page
- * @return [type]           [description]
- */
-function redirect_non_logged_in_users() {
 
-	global $wp;
+class Nock_App_Theme {
 
-	$pages = array( 'signup' );
+	protected $user_is_logged_in;
 
-	if ( in_array( $wp->request, $pages ) ) {
-		return;
+	protected static $single_instance = null;
+
+	static function init() {
+		
+		if ( self::$single_instance === null ) {
+			self::$single_instance = new self();
+		} 
+
+		return self::$single_instance;
+
 	}
 
-    if ( ! is_home() && ! is_user_logged_in() ) {
-    	
-    	wp_redirect( home_url(), 301 );
-    	exit;
-
-    }
-
-}
-
-add_action( 'template_redirect', 'redirect_non_logged_in_users' );
-
-
-function force_login( $template ) {
-
-    if( is_home() && ! is_user_logged_in() ) {
-    	
-    	$login_page = locate_template( array( 'templates/login.php' ) );
-    	
-    	if ( $login_page ) {
-    		return $login_page;
-    	}
-
-    }
-
-    return $template;
-
-}
-
-add_action( 'template_include', 'force_login' );
-
-
-function society_styles_and_scripts() {
+	public function __construct() {
+		include_once 'includes/proxy.php';
+	}
 	
-	wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
-	wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' );
-	wp_enqueue_style( 'fjord-font', 'https://fonts.googleapis.com/css?family=Arvo' );
-	wp_enqueue_style( 'bevan-font', 'https://fonts.googleapis.com/css?family=Bevan' );
-	wp_enqueue_style( 'societwy-front', get_template_directory_uri() . '/css/society-front.css' );
+	public function hooks() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'init_styles_and_scripts' ) );
+		add_action( 'template_include', array( $this, 'force_login' ) );
+		add_action( 'template_redirect', array( $this, 'redirect_non_logged_in_users' ) );
+	}
 
-	wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
-	wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('jquery'), '1.4.7', true );
-	wp_enqueue_script( 'angular-route', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js', array('jquery'), '1.4.7', true );
+	public function init_styles_and_scripts() {
+		
+		wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
+		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' );
+		wp_enqueue_style( 'fjord-font', 'https://fonts.googleapis.com/css?family=Arvo' );
+		wp_enqueue_style( 'bevan-font', 'https://fonts.googleapis.com/css?family=Bevan' );
+		wp_enqueue_style( 'societwy-front', get_template_directory_uri() . '/css/society-front.css' );
 
-	wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5', true );
-	wp_enqueue_script( 'social', get_template_directory_uri() . '/js/social.js', array( 'jquery', 'angular-resource', 'angular-route' ), '0.1.0', true );
-	wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
+		wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
+		wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('jquery'), '1.4.7', true );
+		wp_enqueue_script( 'angular-route', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js', array('jquery'), '1.4.7', true );
+		wp_enqueue_script( 'angular-cookies', 'https://code.angularjs.org/1.5.0-beta.2/angular-cookies.min.js', array('angular'), '1.5.0', true );
 
-	$local_vars = array(
-		'views' => get_template_directory_uri() . '/views',
-	);
+		wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5', true );
+		wp_enqueue_script( 'social', get_template_directory_uri() . '/js/social.js', array( 'jquery', 'angular-resource', 'angular-route' ), '0.1.0', true );
+		wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
-	wp_localize_script( 'social', 'social', $local_vars );
+		$local_vars = array(
+			'views' => get_template_directory_uri() . '/views',
+		);
 
-	add_action( 'rest_api_init', 'register_routes' );
+		wp_localize_script( 'social', 'social', $local_vars );
+
+	}
+
+	public function user_is_logged_in() {
+
+		if ( isset( $_COOKIE['logged_in'] ) && isset( $_COOKIE['nock_access_token'] ) ) {
+			return $_COOKIE['logged_in'];
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Redirects non-logged in users to the home page
+	 * @return [type]           [description]
+	 */
+	public function redirect_non_logged_in_users() {
+
+		global $wp;
+
+		$pages = array( 'signup' );
+
+		if ( in_array( $wp->request, $pages ) ) {
+			return;
+		}
+
+	    if ( ! is_home() && ! $this->user_is_logged_in() ) {
+	    	
+	    	wp_redirect( home_url(), 301 );
+	    	exit;
+
+	    }
+
+	}
+
+	public function force_login( $template ) {
+
+	    if( ! $this->user_is_logged_in() ) {
+	    	
+	    	$login_page = locate_template( array( 'templates/login.php' ) );
+	    	
+	    	if ( $login_page ) {
+	    		return $login_page;
+	    	}
+
+	    }
+
+	    return $template;
+
+	}
 
 }
 
-add_action( 'wp_enqueue_scripts', 'society_styles_and_scripts' );
+add_action( 'after_setup_theme', array( Nock_App_Theme::init() , 'hooks' ) );
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Hide the admin bar on all front facing pages
@@ -221,29 +266,3 @@ function society_add_comment() {
 
 add_action( 'wp_ajax_post_comment', 'society_add_comment' );
 
-function get_site_path() {
-
-	$home_url_parts = parse_url( home_url() );
-
-	if ( isset( $home_url_parts['path'] ) && ! empty( $home_url_parts['path'] ) ) {
-		return trailingslashit( $home_url_parts['path'] );
-	}
-	
-	return '/';
-
-}
-
-function register_routes() {
-	
-	register_rest_route( 'nock-app/v1', '/login', array(
-        'methods' => 'POST',
-        'callback' => 'POST_proxy_login',
-    ) );
-
-}
-
-function POST_proxy_login() {
-
-	echo "smoke this thing"; exit;
-
-}

@@ -11,6 +11,7 @@
 	</div>
 	<div class="content">{{status.post_content}}</div>
 	<div id="comments">
+		<div class="comment" ng-repeat="comment in comments">{{comment.comment_content}}</div>
 		<div id="comment-entry">
 			<textarea placeholder="Add a comment"></textarea>
 		</div>

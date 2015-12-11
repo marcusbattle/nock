@@ -11,29 +11,23 @@
 </head>
 <body>
 	<div class="container" style="max-width: 600px; margin: 0 auto;">
-		<div>
-			<form ng-controller="Login" ng-submit="submit()">
-				<div>
-					<label>Username</label>
-					<input type="text" placeholder="(336) 555-5555" name="mobile" ng-model="formData.username" class="field" />
-				</div>
-				<div>
-					<label>Password</label>
-					<input type="password" placeholder="*******" name="password" ng-model="formData.password" class="field" />
-				</div>
-				<div>
-					<button class="btn btn-default" type="submit">Knock</button>
-				</div>
-			</form>
+		<div id="login-screen" class="screen">
+			<div id="login-form">
+				<form ng-controller="Login" ng-submit="submit()">
+					<div>
+						<label>Username</label>
+						<input type="text" placeholder="(336) 555-5555" name="mobile" ng-model="formData.username" class="field" />
+					</div>
+					<div>
+						<label>Password</label>
+						<input type="password" placeholder="*******" name="password" ng-model="formData.password" class="field" />
+					</div>
+					<div>
+						<button class="btn btn-default" type="submit">Knock</button>
+					</div>
+				</form>
+			</div>
 		</div>
-		<!-- <div class="row text-center">
-			<h1>I'm building a private social network.</h1>
-			<p>&nbsp;</p>
-			<p class="lead">Why? Facebook is too public. My parents aren't on Facebook. My wife and I want to share things with them that they wouldn't ever see on Facebook, Instagram or Twitter. Soon we'll share them with our closest friends. Then the "world."</p>
-			<p class="lead">Currently it's only open to Me (Marcus), but if you'd like a preview, email marcus (at) marcusbattle.com</p>
-			<p>&nbsp;</p>
-			<a class="btn btn-default" href="<?php echo home_url('wp-login.php'); ?>">Secret Login for Marcus</a>
-		</div> -->
 	</div>
 	<?php wp_footer(); ?>
 </body>
