@@ -34,22 +34,17 @@ nock_app.config( function( $routeProvider, $locationProvider, $httpProvider ) {
 		.when('/networks', {
 			templateUrl: nock.views + '/networks.php',
 			controller: 'Networks'
-		})
-		.otherwise({
-	       redirectTo: '/'
-	    });
+		});
 
 });
 
 nock_app.run(['$rootScope', '$location', 'authProvider', function ( $rootScope, $location, authProvider ) {
        
     $rootScope.$on( '$routeChangeStart', function ( event, next, current ) {
-    	
-    	event.preventDefault();
-
+    
         if ( ! authProvider.isLoggedIn() ) {
-				
-			window.location = '#/login';
+			
+			$location.path('login');
 
         } else {
 
@@ -63,20 +58,21 @@ nock_app.run(['$rootScope', '$location', 'authProvider', function ( $rootScope, 
 
 nock_app.factory( 'authProvider', function() {
 	
-	var user;
+	var loginStatus;
     
     return {
         
-		setUser : function( aUser ) {
-			user = aUser;
+		setLoginStatus : function( status ) {
+			loginStatus = status;
         },
         isLoggedIn : function() {
-			return ( user ) ? user : false;
+			return ( loginStatus ) ? loginStatus : false;
         }
 
 	};
 
 });
+
 
 nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
 
@@ -96,10 +92,10 @@ nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
     	}
 
     })
-    .controller( 'Login', function( $scope, $cookies, $http, $routeParams ) {
+    .controller( 'Login', function( $scope, $cookies, $http, $routeParams, $location, authProvider ) {
     	
     	$scope.formData = {};
-
+    	
         $scope.submit = function() {
 
         	$http.post( 'wp-json/nock-app/v1/login', $scope.formData ).success( function( data ) { 
@@ -108,9 +104,11 @@ nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
 					
 					$cookies.put( 'logged_in', true );
 
-					window.location.reload();
-
-				} else {
+					// window.location.reload();
+					authProvider.setLoginStatus( true );
+					console.log( authProvider.isLoggedIn() );
+					
+					$location.path('/');
 
 				}
 

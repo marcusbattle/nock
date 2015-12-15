@@ -25,8 +25,9 @@ class Nock_App_Theme {
 
 		add_action( 'admin_menu', array( $this, 'nock_app_settings' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'init_styles_and_scripts' ) );
-		add_action( 'template_include', array( $this, 'force_login' ) );
 		add_action( 'template_redirect', array( $this, 'redirect_non_logged_in_users' ) );
+
+		add_filter('show_admin_bar', '__return_false'); // Hide the admin bar on all front facing pages
 
 	}
 
@@ -75,34 +76,12 @@ class Nock_App_Theme {
 
 		global $wp;
 
-		$pages = array( 'login', 'signup' );
-		
-		if ( in_array( $wp->request, $pages ) ) {
-			return;
-		}
-
-	    if ( ! is_home() && ! $this->user_is_logged_in() ) {
+	    if ( ! is_home() ) {
 	    	
-	    	// wp_redirect( site_url(), 301 );
-	    	// exit;
+	    	wp_redirect( site_url(), 301 );
+	    	exit;
 
 	    }
-
-	}
-
-	public function force_login( $template ) {
-
-	    if( ! $this->user_is_logged_in() ) {
-	    	
-	    	$login_page = locate_template( array( 'views/login.php' ) );
-	    	
-	    	if ( $login_page ) {
-	    		// return $login_page;
-	    	}
-
-	    }
-
-	    return $template;
 
 	}
 
@@ -123,10 +102,7 @@ add_action( 'after_setup_theme', array( Nock_App_Theme::init() , 'hooks' ) );
 
 
 
-/**
- * Hide the admin bar on all front facing pages
- */
-add_filter('show_admin_bar', '__return_false');
+
 
 
 function society_create_post() {
