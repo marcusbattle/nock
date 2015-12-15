@@ -22,38 +22,43 @@ class Nock_App_Theme {
 	}
 	
 	public function hooks() {
+
+		add_action( 'admin_menu', array( $this, 'nock_app_settings' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'init_styles_and_scripts' ) );
 		add_action( 'template_include', array( $this, 'force_login' ) );
 		add_action( 'template_redirect', array( $this, 'redirect_non_logged_in_users' ) );
+
 	}
 
 	public function init_styles_and_scripts() {
 		
 		wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
-		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' );
 		wp_enqueue_style( 'fjord-font', 'https://fonts.googleapis.com/css?family=Arvo' );
 		wp_enqueue_style( 'bevan-font', 'https://fonts.googleapis.com/css?family=Bevan' );
-		wp_enqueue_style( 'societwy-front', get_template_directory_uri() . '/css/society-front.css' );
+		wp_enqueue_style( 'societwy-front', get_template_directory_uri() . '/css/nock.css' );
 
 		wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
 		wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('jquery'), '1.4.7', true );
 		wp_enqueue_script( 'angular-route', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js', array('jquery'), '1.4.7', true );
 		wp_enqueue_script( 'angular-cookies', 'https://code.angularjs.org/1.5.0-beta.2/angular-cookies.min.js', array('angular'), '1.5.0', true );
 
-		wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5', true );
-		wp_enqueue_script( 'social', get_template_directory_uri() . '/js/social.js', array( 'jquery', 'angular-resource', 'angular-route' ), '0.1.0', true );
+		wp_enqueue_script( 'nock', get_template_directory_uri() . '/js/nock.js', array( 'jquery', 'angular-resource', 'angular-route' ), '0.1.0', true );
 		wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
 		$local_vars = array(
 			'views' => get_template_directory_uri() . '/views',
 		);
 
-		wp_localize_script( 'social', 'social', $local_vars );
+		wp_localize_script( 'nock', 'nock', $local_vars );
 
 	}
 
+	public function nock_app_settings() {
+		
+	}
+	
 	public function user_is_logged_in() {
-
+		
 		if ( isset( $_COOKIE['logged_in'] ) && isset( $_COOKIE['nock_access_token'] ) ) {
 			return $_COOKIE['logged_in'];
 		}
@@ -70,16 +75,16 @@ class Nock_App_Theme {
 
 		global $wp;
 
-		$pages = array( 'signup' );
-
+		$pages = array( 'login', 'signup' );
+		
 		if ( in_array( $wp->request, $pages ) ) {
 			return;
 		}
 
 	    if ( ! is_home() && ! $this->user_is_logged_in() ) {
 	    	
-	    	wp_redirect( home_url(), 301 );
-	    	exit;
+	    	// wp_redirect( site_url(), 301 );
+	    	// exit;
 
 	    }
 
@@ -89,10 +94,10 @@ class Nock_App_Theme {
 
 	    if( ! $this->user_is_logged_in() ) {
 	    	
-	    	$login_page = locate_template( array( 'templates/login.php' ) );
+	    	$login_page = locate_template( array( 'views/login.php' ) );
 	    	
 	    	if ( $login_page ) {
-	    		return $login_page;
+	    		// return $login_page;
 	    	}
 
 	    }

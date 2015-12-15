@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="social">
+<html ng-app="nock">
 <head>
 	<base href="<?php echo site_url( '/', 'relative' ); ?>">
 	<title>A New Private Social Network</title>
