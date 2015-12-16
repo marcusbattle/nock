@@ -18,7 +18,11 @@ class Nock_App_Theme {
 	}
 
 	public function __construct() {
-		include_once 'includes/CMB2/init.php';
+
+		if ( file_exists( dirname( __FILE__ ) . '/includes/CMB2/init.php' ) ) {
+			include_once 'includes/CMB2/init.php';	
+		}
+		
 		include_once 'includes/proxy.php';
 	}
 	
