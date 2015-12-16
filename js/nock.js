@@ -7,17 +7,21 @@ nock_app.config( function( $routeProvider, $locationProvider, $httpProvider ) {
 	// $locationProvider.html5Mode( true ); // Remove the '#' from URL.
 
 	$routeProvider			
-		.when('/', {
-			templateUrl: nock.views + '/statuses.php',
-			controller: 'Home'
-		})
 		.when('/login', {
 			templateUrl: nock.views + '/login.php',
 			controller: 'Login'
 		})
+		.when('/', {
+			templateUrl: nock.views + '/statuses.php',
+			controller: 'Statuses'
+		})
+		.when('/status/new', {
+			templateUrl: nock.views + '/new-status.php',
+			controller: 'NewStatus'
+		})
 		.when('/status/:ID', {
 			templateUrl: nock.views + '/status.php',
-			controller: 'Single'
+			controller: 'Status'
 		})
 		.when('/signup', {
 			templateUrl: nock.views + '/signup.php',
@@ -67,11 +71,16 @@ nock_app.factory( 'authProvider', function( $cookies ) {
 });
 
 
-nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
+nock_app.controller( 'Statuses', function( $scope, $http, $routeParams, $cookies ) {
 
 		$http.get( 'wp-json/nock-app/v1/statuses' ).success( function( response ) {
 			$scope.statuses = response;
 		});
+    	
+    })
+	.controller( 'NewStatus', function( $scope, $http, $routeParams, $cookies ) {
+
+		console.log( 'you got this bro' );
     	
     })
     .controller( 'Networks', function( $scope, $http, $routeParams, $cookies ) {
@@ -90,7 +99,7 @@ nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
     	$scope.formData = {};
     	
         $scope.submit = function() {
-        
+
         	$http.post( 'wp-json/nock-app/v1/login', $scope.formData ).success( function( data ) { 
 				
 				if ( data.success ) {
@@ -124,7 +133,7 @@ nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
 		}
 
     })
-    .controller( 'Single', function( $scope, $http, $routeParams ) {
+    .controller( 'Status', function( $scope, $http, $routeParams ) {
 		
 		$http.get( 'wp-json/social-api/v1/statuses/' + $routeParams.ID ).success( function( response ) {
 			$scope.status = response;

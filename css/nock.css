@@ -60,7 +60,7 @@ textarea {
   font-family: 'Arvo', serif;
   font-size: 16px; }
 
-#status-box {
+#new-status {
   box-sizing: border-box;
   padding: 10px;
   margin-bottom: 40px;
@@ -68,14 +68,13 @@ textarea {
   position: absolute;
   z-index: 1000;
   display: block;
-  height: 100%;
+  min-height: 200px;
   width: 100%;
   background-color: #fff;
   left: 0;
   top: 0;
-  overflow: scroll;
-  display: none; }
-  #status-box #image-preview img {
+  overflow: scroll; }
+  #new-status #image-preview img {
     max-width: 100%;
     margin-bottom: 10px; }
 

@@ -76,7 +76,7 @@ class Nock_App_Proxy_API {
 		$args['body'] = $params;
 
 		$response = $this->query_api( 'post', $this->nock_api_endpoint . '/wp-json/social-api/v1/oauth/access_token', $args );
-		
+
 		// Create the session for the user
 		if ( isset( $response['access_token'] ) ) {
 			

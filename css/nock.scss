@@ -79,7 +79,7 @@ textarea {
 	font-size: 16px;
 }
 
-#status-box {
+#new-status {
 	
 	box-sizing: border-box;
 	padding: 10px;
@@ -89,7 +89,7 @@ textarea {
 	position: absolute;
 	z-index: 1000;
 	display: block;
-	height: 100%;
+	min-height: 200px;
 	width: 100%;
 	background-color: #fff;
 	left: 0;
@@ -104,8 +104,6 @@ textarea {
 		}
 
 	}
-
-	display: none;
 
 }
 

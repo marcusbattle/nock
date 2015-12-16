@@ -1,4 +1,4 @@
-<form id="status-box" enctype="multipart/form-data">
+<form id="new-status" enctype="multipart/form-data">
 	<div class="header">
 		<span class="action"><a href="#" class="add-picture">Add Picture</a></span>
 		<input type="file" accept="image/*" id="image-selector" style="display: none;" />
