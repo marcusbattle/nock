@@ -77,6 +77,9 @@ textarea {
   #new-status #image-preview img {
     max-width: 100%;
     margin-bottom: 10px; }
+  #new-status .status-content {
+    border: 1px solid #DDD;
+    min-height: 70px; }
 
 .data-list {
   list-style: none;

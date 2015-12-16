@@ -4,7 +4,8 @@
 		<input type="file" accept="image/*" id="image-selector" style="display: none;" />
 	</div>
 	<div id="image-preview"></div>
-	<textarea name="status" placeholder="Say something."></textarea>
+	<div class="status-content" contenteditable="true"></div>
+	<!-- <textarea name="status" placeholder="Say something."></textarea> -->
 	<div>
 		<button id="post-status" class="btn btn-default">Post</button>
 		<span id="upload-percentage"></span>
