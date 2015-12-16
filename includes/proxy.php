@@ -4,6 +4,9 @@ class Nock_App_Proxy_API {
 
 	protected static $single_instance = null;
 
+	protected $nock_app_settings;
+	protected $nock_api_endpoint;
+
 	static function init() {
 		
 		if ( self::$single_instance === null ) {
@@ -12,6 +15,11 @@ class Nock_App_Proxy_API {
 
 		return self::$single_instance;
 
+	}
+
+	public function __construct() {
+		$this->nock_app_settings = get_option( 'nock-app-settings', array() );
+		$this->nock_api_endpoint = isset( $this->nock_app_settings['nock_api_endpoint'] ) ? untrailingslashit( $this->nock_app_settings['nock_api_endpoint'] ) : 'http://nock.battlebranding.com';
 	}
 
 	public function hooks() {
@@ -59,7 +67,7 @@ class Nock_App_Proxy_API {
 
 		$args['body'] = $params;
 
-		$response = $this->query_api( 'post', 'http://marcbook.local/social/wp-json/social-api/v1/oauth/access_token', $args );
+		$response = $this->query_api( 'post', $this->nock_api_endpoint . '/wp-json/social-api/v1/oauth/access_token', $args );
 
 		// Create the session for the user
 		if ( isset( $response['access_token'] ) ) {
@@ -84,7 +92,7 @@ class Nock_App_Proxy_API {
 			)
 		);
 
-		$response = $this->query_api( 'get', 'http://marcbook.local/social/wp-json/social-api/v1/networks', $args );
+		$response = $this->query_api( 'get', $this->nock_api_endpoint . '/wp-json/social-api/v1/networks', $args );
 		
 		return $response;
 
@@ -98,7 +106,7 @@ class Nock_App_Proxy_API {
 			'access_token' => $this->get_access_token()
 		);
 		
-		$response = $this->query_api( 'get', 'http://marcbook.local/social/wp-json/social-api/v1/statuses?' . http_build_query( $params ) );
+		$response = $this->query_api( 'get', $this->nock_api_endpoint . '/wp-json/social-api/v1/statuses?' . http_build_query( $params ) );
 
 		return $response;
 
@@ -114,7 +122,7 @@ class Nock_App_Proxy_API {
 			'access_token' => $this->get_access_token()
 		);
 		
-		$response = $this->query_api( 'get', "http://marcbook.local/social/wp-json/social-api/v1/statuses/{$status_id}?" . http_build_query( $params ) );
+		$response = $this->query_api( 'get', $this->nock_api_endpoint . "/wp-json/social-api/v1/statuses/{$status_id}?" . http_build_query( $params ) );
 
 		return $response;
 

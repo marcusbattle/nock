@@ -54,13 +54,10 @@ nock_app.run(['$rootScope', '$location', 'authProvider', function ( $rootScope, 
 
 nock_app.factory( 'authProvider', function( $cookies ) {
 	
-	var loginStatus = $cookies.get('logged_in');
+	var loginStatus = $cookies.get('nock_access_token');
     
     return {
         
-		setLoginStatus : function( status ) {
-			loginStatus = status;
-        },
         isLoggedIn : function() {
 			return ( loginStatus ) ? loginStatus : false;
         }
@@ -99,11 +96,6 @@ nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
 				if ( data.success ) {
 					
 					$cookies.put( 'logged_in', true );
-
-					// window.location.reload();
-					authProvider.setLoginStatus( true );
-					console.log( authProvider.isLoggedIn() );
-					
 					$location.path('/');
 
 				}

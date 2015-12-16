@@ -50,7 +50,7 @@ class Nock_App_Theme {
 		wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
 		$local_vars = array(
-			'views' => get_template_directory_uri() . '/views',
+			'views' 	=> get_template_directory_uri() . '/views',
 		);
 
 		wp_localize_script( 'nock', 'nock', $local_vars );
@@ -65,14 +65,14 @@ class Nock_App_Theme {
 		?>
 		<div class="wrap cmb2-options-page nock-app-settings">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-			<?php cmb2_metabox_form( '_nock_app_settings', 'nock-app-settings' ); ?>
+			<?php cmb2_metabox_form( 'nock_app_settings', 'nock-app-settings' ); ?>
 		</div>
 		<?php
 	}
 
 	public function nock_app_theme_metabox() {
 
-		$prefix = '_nock_';
+		$prefix = 'nock_';
 
 		$cmb = new_cmb2_box( array(
 			'id'         => $prefix . 'app_settings',
@@ -82,6 +82,12 @@ class Nock_App_Theme {
 				'key'   => 'options-page',
 				'value' => 'nock-app-settings'
 			),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'App API Endpoint', 'nock' ),
+			'id'   => $prefix . 'api_endpoint',
+			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
