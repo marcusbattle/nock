@@ -90,7 +90,7 @@ nock_app.controller( 'Home', function( $scope, $http, $routeParams, $cookies ) {
     	$scope.formData = {};
     	
         $scope.submit = function() {
-        	alert('we here');
+        
         	$http.post( 'wp-json/nock-app/v1/login', $scope.formData ).success( function( data ) { 
 				
 				if ( data.success ) {
