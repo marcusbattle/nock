@@ -18,6 +18,7 @@ class Nock_App_Theme {
 	}
 
 	public function __construct() {
+		include_once 'includes/CMB2/init.php';
 		include_once 'includes/proxy.php';
 	}
 	
@@ -28,6 +29,8 @@ class Nock_App_Theme {
 		add_action( 'template_redirect', array( $this, 'redirect_non_logged_in_users' ) );
 
 		add_filter('show_admin_bar', '__return_false'); // Hide the admin bar on all front facing pages
+
+		add_action( 'cmb2_admin_init', array( $this, 'nock_app_theme_metabox' ) );
 
 	}
 
@@ -55,7 +58,44 @@ class Nock_App_Theme {
 	}
 
 	public function nock_app_settings() {
-		
+		add_options_page( 'Nock App', 'Nock App', 'manage_options', 'nock-app-settings', array( $this, 'nock_app_settings_page' ) );
+	}
+
+	public function nock_app_settings_page() {
+		?>
+		<div class="wrap cmb2-options-page nock-app-settings">
+			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+			<?php cmb2_metabox_form( '_nock_app_settings', 'nock-app-settings' ); ?>
+		</div>
+		<?php
+	}
+
+	public function nock_app_theme_metabox() {
+
+		$prefix = '_nock_';
+
+		$cmb = new_cmb2_box( array(
+			'id'         => $prefix . 'app_settings',
+			'hookup'     => false,
+			'cmb_styles' => true,
+			'show_on'    => array(
+				'key'   => 'options-page',
+				'value' => 'nock-app-settings'
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'App Consumer Key', 'nock' ),
+			'id'   => $prefix . 'consumer_key',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'App Consumer Secret', 'nock' ),
+			'id'   => $prefix . 'consumer_secret',
+			'type' => 'text',
+		) );
+
 	}
 	
 	public function user_is_logged_in() {

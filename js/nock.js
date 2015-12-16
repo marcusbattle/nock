@@ -46,19 +46,15 @@ nock_app.run(['$rootScope', '$location', 'authProvider', function ( $rootScope, 
 			
 			$location.path('login');
 
-        } else {
-
-			console.log('ALLOW');
-
         }
 
   	});
 
 }]);
 
-nock_app.factory( 'authProvider', function() {
+nock_app.factory( 'authProvider', function( $cookies ) {
 	
-	var loginStatus;
+	var loginStatus = $cookies.get('logged_in');
     
     return {
         
