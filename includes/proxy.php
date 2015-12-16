@@ -6,6 +6,8 @@ class Nock_App_Proxy_API {
 
 	protected $nock_app_settings;
 	protected $nock_api_endpoint;
+	protected $nock_consumer_key;
+	protected $nock_consumer_secret;
 
 	static function init() {
 		
@@ -18,13 +20,19 @@ class Nock_App_Proxy_API {
 	}
 
 	public function __construct() {
+
 		$this->nock_app_settings = get_option( 'nock-app-settings', array() );
 		$this->nock_api_endpoint = isset( $this->nock_app_settings['nock_api_endpoint'] ) ? untrailingslashit( $this->nock_app_settings['nock_api_endpoint'] ) : 'http://nock.battlebranding.com';
+		$this->nock_consumer_key = isset( $this->nock_app_settings['nock_consumer_key'] ) ? sanitize_text_field( $this->nock_app_settings['nock_consumer_key'] ) : '';
+		$this->nock_consumer_secret = isset( $this->nock_app_settings['nock_consumer_secret'] ) ? sanitize_text_field( $this->nock_app_settings['nock_consumer_secret'] ) : '';
+
 	}
 
 	public function hooks() {
+
 		add_filter( 'json_url_prefix', array( $this, 'api_base_url_slug' ) );
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+
 	}
 
 	public function api_base_url_slug( $slug ) {
@@ -59,8 +67,8 @@ class Nock_App_Proxy_API {
 		
 		$data = $this->get_json_post_data( $data );
 
-		$params['oauth_consumer_key'] = get_option( 'nock_app_client_id', 'cy09si5husgLyc4k2R6jtcTKc' );
-		$params['oauth_consumer_secret'] = get_option( 'nock_app_client_key', 'O7s23SeBSo4atmFWCruPvPSnWbR84BlTINVMGaozytK2PpYrQt' );
+		$params['oauth_consumer_key'] = $this->nock_consumer_key;
+		$params['oauth_consumer_secret'] = $this->nock_consumer_secret;
 		$params['x_auth_mode'] = 'client_auth';
 		$params['x_auth_username'] = $data->get_param('username');
 		$params['x_auth_password'] = $data->get_param('password');
@@ -68,7 +76,7 @@ class Nock_App_Proxy_API {
 		$args['body'] = $params;
 
 		$response = $this->query_api( 'post', $this->nock_api_endpoint . '/wp-json/social-api/v1/oauth/access_token', $args );
-
+		
 		// Create the session for the user
 		if ( isset( $response['access_token'] ) ) {
 			
@@ -88,7 +96,7 @@ class Nock_App_Proxy_API {
 
 		$args = array(
 			'body' => array(
-				'access_token' => 'ask'
+				'access_token' => $this->get_access_token()
 			)
 		);
 
