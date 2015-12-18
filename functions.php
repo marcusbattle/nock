@@ -8,10 +8,10 @@ class Nock_App_Theme {
 	protected static $single_instance = null;
 
 	static function init() {
-		
+
 		if ( self::$single_instance === null ) {
 			self::$single_instance = new self();
-		} 
+		}
 
 		return self::$single_instance;
 
@@ -20,12 +20,13 @@ class Nock_App_Theme {
 	public function __construct() {
 
 		if ( file_exists( dirname( __FILE__ ) . '/includes/CMB2/init.php' ) ) {
-			include_once 'includes/CMB2/init.php';	
+			include_once 'includes/CMB2/init.php';
 		}
-		
+
 		include_once 'includes/proxy.php';
+
 	}
-	
+
 	public function hooks() {
 
 		add_action( 'admin_menu', array( $this, 'nock_app_settings' ) );
@@ -39,7 +40,7 @@ class Nock_App_Theme {
 	}
 
 	public function init_styles_and_scripts() {
-		
+
 		wp_enqueue_style( 'fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 		wp_enqueue_style( 'fjord-font', 'https://fonts.googleapis.com/css?family=Arvo' );
 		wp_enqueue_style( 'bevan-font', 'https://fonts.googleapis.com/css?family=Bevan' );
@@ -107,9 +108,9 @@ class Nock_App_Theme {
 		) );
 
 	}
-	
+
 	public function user_is_logged_in() {
-		
+
 		if ( isset( $_COOKIE['logged_in'] ) && isset( $_COOKIE['nock_access_token'] ) ) {
 			return $_COOKIE['logged_in'];
 		}
@@ -127,7 +128,7 @@ class Nock_App_Theme {
 		global $wp;
 
 	    if ( ! is_home() ) {
-	    	
+
 	    	wp_redirect( site_url(), 301 );
 	    	exit;
 
@@ -182,10 +183,10 @@ function society_create_post() {
 	$image_data = isset( $_POST['image']['data'] ) ? str_replace( "data:{$image_type};base64,", '', $_POST['image']['data'] ) : '';
 	$image_name = isset( $_POST['image']['name'] ) ? $_POST['image']['name'] : '';
 	$image_modified = isset( $_POST['image']['modified'] ) && ! empty( $_POST['image']['modified'] ) ? $_POST['image']['modified'] : strtotime( date('Y-m-d H:i:s') );
-	
+
 	$filetype = wp_check_filetype( basename( $image_name ) );
 	$image_name = $user->user_login . '.' . $image_modified . '.' . $filetype['ext'];
-	
+
 	$image_data = str_replace(' ', '+', $image_data );
 
 	if ( $image_data && $image_name && $image_type ) {
@@ -197,14 +198,14 @@ function society_create_post() {
 			$decoded_image = base64_decode( $image_data );
 			file_put_contents( $image_path, $decoded_image );
 
-		} 
+		}
 
-		
+
 
 		if ( $filetype ) {
 
 			$attachment = array(
-				'guid'           => $upload_dir['url'] . '/' . basename( $image_path ), 
+				'guid'           => $upload_dir['url'] . '/' . basename( $image_path ),
 				'post_mime_type' => $filetype['type'],
 				'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $image_path ) ),
 				'post_content'   => '',
@@ -230,30 +231,8 @@ function society_create_post() {
 
 add_action( 'wp_ajax_post_status', 'society_create_post' );
 
-function add_status_post_type() {
-    
-    $args = array(
-      'public' => true,
-      'label'  => 'Statuses'
-    );
 
-    register_post_type( 'status', $args );
 
-}
-
-add_action( 'init', 'add_status_post_type' );
-
-function add_status_to_home( $query ) {
-	
-	if ( is_home() && $query->is_main_query() ) {
-		$query->set( 'post_type', array( 'status' ) );
-	}
-
-	return $query;
-}
-
-add_action( 'pre_get_posts', 'add_status_to_home' );
-	
 function redirect_after_login( $redirect_to, $request, $user ) {
 
 	if ( $redirect_to == 'http://marcbook.local/social/wp-admin/' ) {

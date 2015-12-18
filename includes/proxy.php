@@ -10,10 +10,10 @@ class Nock_App_Proxy_API {
 	protected $nock_consumer_secret;
 
 	static function init() {
-		
+
 		if ( self::$single_instance === null ) {
 			self::$single_instance = new self();
-		} 
+		}
 
 		return self::$single_instance;
 
@@ -40,7 +40,7 @@ class Nock_App_Proxy_API {
 	}
 
 	public function register_routes() {
-		
+
 		register_rest_route( 'nock-app/v1', '/login', array(
 	        'methods' => 'POST',
 	        'callback' => array( $this, 'POST_proxy_login' ),
@@ -64,7 +64,7 @@ class Nock_App_Proxy_API {
 	}
 
 	public function POST_proxy_login( $data ) {
-		
+
 		$data = $this->get_json_post_data( $data );
 
 		$params['oauth_consumer_key'] = $this->nock_consumer_key;
@@ -79,14 +79,14 @@ class Nock_App_Proxy_API {
 
 		// Create the session for the user
 		if ( isset( $response['access_token'] ) ) {
-			
+
 			$this->set_access_token( $response['access_token'] );
 
 			return array( 'success' => true );
 
 		}
 
-		return array( 'success' => false );
+		return array( 'success' => false, 'response' => $response );
 
 	}
 
@@ -101,7 +101,7 @@ class Nock_App_Proxy_API {
 		);
 
 		$response = $this->query_api( 'get', $this->nock_api_endpoint . '/wp-json/social-api/v1/networks', $args );
-		
+
 		return $response;
 
 	}
@@ -113,7 +113,7 @@ class Nock_App_Proxy_API {
 		$params = array(
 			'access_token' => $this->get_access_token()
 		);
-		
+
 		$response = $this->query_api( 'get', $this->nock_api_endpoint . '/wp-json/social-api/v1/statuses?' . http_build_query( $params ) );
 
 		return $response;
@@ -129,7 +129,7 @@ class Nock_App_Proxy_API {
 		$params = array(
 			'access_token' => $this->get_access_token()
 		);
-		
+
 		$response = $this->query_api( 'get', $this->nock_api_endpoint . "/wp-json/social-api/v1/statuses/{$status_id}?" . http_build_query( $params ) );
 
 		return $response;
@@ -140,7 +140,7 @@ class Nock_App_Proxy_API {
 
 		$remote_func = 'wp_remote_' . strtolower( $method );
 		$result = $remote_func( $url, $args );
-		
+
 		if ( $result['response']['code'] !== 200 ) {
 			return array( 'errors' => $result['response'] );
 		}
@@ -154,7 +154,7 @@ class Nock_App_Proxy_API {
 		if ( array_filter( $data->get_params() ) ) {
 			return $data;
 		}
-		
+
 		// Get the post data for Angular JS POST/GET
 		$request_data = file_get_contents("php://input");
 		$request_data = json_decode( $request_data );
@@ -190,7 +190,7 @@ class Nock_App_Proxy_API {
 		return false;
 
 	}
-	
+
 }
 
 add_action( 'after_setup_theme', array( Nock_App_Proxy_API::init(), 'hooks' ) );
