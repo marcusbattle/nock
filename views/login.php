@@ -1,17 +1,15 @@
-<div id="login-screen" class="screen">
-	<div id="login-form">
-		<form ng-controller="Login" ng-submit="submit()">
-			<div>
-				<label>Username</label>
-				<input type="text" placeholder="(336) 555-5555" name="mobile" ng-model="formData.username" class="field" />
-			</div>
-			<div>
-				<label>Password</label>
-				<input type="password" placeholder="*******" name="password" ng-model="formData.password" class="field" />
-			</div>
-			<div>
-				<button class="btn btn-default" type="submit">Knock</button>
-			</div>
-		</form>
-	</div>
+<div id="login-form" ng-controller="Login">
+	<form name="loginForm" ng-submit="submit()" novalidate>
+		<div>
+			<label>Username</label>
+			<input type="text" name="username" ng-model="data.username" autocomplete="off" autocorrect="off" required />
+		</div>
+		<div>
+			<label>Password</label>
+			<input type="password" placeholder="*******" ng-model="data.password" autocomplete="off" autocorrect="off"  required />
+		</div>
+		<div>
+			<button type="submit">Knock</button>
+		</div>
+	</form>
 </div>

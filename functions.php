@@ -47,11 +47,12 @@ class Nock_App_Theme {
 		wp_enqueue_style( 'societwy-front', get_template_directory_uri() . '/css/nock.css' );
 
 		wp_enqueue_script( 'angular', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js', array('jquery'), '1.4.7', true );
-		wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('jquery'), '1.4.7', true );
-		wp_enqueue_script( 'angular-route', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js', array('jquery'), '1.4.7', true );
+		wp_enqueue_script( 'angular-resource', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js', array('angular'), '1.4.7', true );
+		wp_enqueue_script( 'angular-route', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js', array('angular'), '1.4.7', true );
 		wp_enqueue_script( 'angular-cookies', 'https://code.angularjs.org/1.5.0-beta.2/angular-cookies.min.js', array('angular'), '1.5.0', true );
+		wp_enqueue_script( 'angular-messages', '//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js', array('angular'), '1.4.0', true );
 
-		wp_enqueue_script( 'nock', get_template_directory_uri() . '/js/nock.js', array( 'jquery', 'angular-resource', 'angular-route' ), '0.1.0', true );
+		wp_enqueue_script( 'nock', get_template_directory_uri() . '/js/nock.js', array( 'jquery', 'angular-resource', 'angular-route', 'angular-messages' ), '0.1.0', true );
 		wp_enqueue_script( 'society-front', get_template_directory_uri() . '/js/society.js', array('jquery'), '0.1.0', true );
 
 		$local_vars = array(

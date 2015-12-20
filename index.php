@@ -7,9 +7,7 @@
 	<?php wp_head(); ?>
 </head>
 <body>
-	<div id="viewport" class="container" style="max-width: 600px; margin: 0 auto;">
-		<div ng-view></div>
-	</div>
+	<div ng-view></div>
 	<?php wp_footer(); ?>
 </body>
 </html>
